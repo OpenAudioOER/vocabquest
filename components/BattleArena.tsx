@@ -29,7 +29,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
   const [activeSentence, setActiveSentence] = useState<string>('');
   const [synonymTarget, setSynonymTarget] = useState<'synonym' | 'antonym'>('synonym');
   const [hiddenOptions, setHiddenOptions] = useState<string[]>([]);
-  
+
   // Spelling State
   const [spellingWord, setSpellingWord] = useState<string>('');
   const [spellingInput, setSpellingInput] = useState<string[]>([]);
@@ -48,7 +48,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
     let xpBoost = 0;
     let totalShields = 0;
     let totalHints = 0;
-    
+
     Object.values(user.equipped).forEach(itemId => {
       const item = SHOP_ITEMS.find(i => i.id === itemId);
       if (item?.bonus) {
@@ -58,9 +58,9 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
         if (item.bonus.type === 'HINT') totalHints += item.bonus.value;
       }
     });
-    
-    return { 
-      goldBoost, 
+
+    return {
+      goldBoost,
       xpBoost,
       maxHints: totalHints,
       maxShields: totalShields
@@ -86,12 +86,12 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
   // Setup options when index changes
   useEffect(() => {
     if (gameWords.length === 0 || stage !== 'BATTLE') return;
-    
+
     const currentWord = gameWords[currentIndex];
     const types = [
-      QuestionType.DEFINITION, 
-      QuestionType.DEFINITION_TO_WORD, 
-      QuestionType.FILL_BLANK, 
+      QuestionType.DEFINITION,
+      QuestionType.DEFINITION_TO_WORD,
+      QuestionType.FILL_BLANK,
       QuestionType.SYNONYM,
       QuestionType.SPELLING,
       QuestionType.SPELLING, // Double the frequency
@@ -101,7 +101,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
     setQType(type);
 
     let opts: string[] = [];
-    
+
     if (type === QuestionType.DEFINITION) {
       opts = [currentWord.definition, ...currentWord.distractors];
     } else if (type === QuestionType.DEFINITION_TO_WORD) {
@@ -123,7 +123,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
     } else if (type === QuestionType.SYNONYM) {
       const mode = Math.random() > 0.5 ? 'synonym' : 'antonym';
       setSynonymTarget(mode);
-      
+
       const correct = mode === 'synonym' ? currentWord.synonyms[0] : currentWord.antonyms[0];
       const decoys = words
         .filter(w => w.id !== currentWord.id)
@@ -139,7 +139,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
       setSpellingAttempts(0);
       setIncorrectIndices([]);
     }
-    
+
     setOptions(shuffleArray(opts));
     setSelectedAnswer(null);
     setIsCorrect(null);
@@ -148,7 +148,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
 
   const useHint = () => {
     if (hintsUsed >= bonuses.maxHints || selectedAnswer || qType === QuestionType.FILL_BLANK) return;
-    
+
     const currentWord = gameWords[currentIndex];
     let correct = '';
     if (qType === QuestionType.DEFINITION) correct = currentWord.definition;
@@ -156,14 +156,14 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
 
     const wrongs = options.filter(o => o !== correct && !hiddenOptions.includes(o));
     const toHide = wrongs.sort(() => 0.5 - Math.random()).slice(0, 2);
-    
+
     setHiddenOptions(prev => [...prev, ...toHide]);
     setHintsUsed(prev => prev + 1);
   };
 
   const handleAnswer = (ans: string) => {
     if (selectedAnswer) return;
-    
+
     const currentWord = gameWords[currentIndex];
     let correct = false;
 
@@ -174,7 +174,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
 
     if (!correct && (bonuses.maxShields - shieldsUsed) > 0) {
       setShieldsUsed(prev => prev + 1);
-      return; 
+      return;
     }
 
     setSelectedAnswer(ans);
@@ -191,7 +191,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
 
   const handleSpellingSubmit = () => {
     if (selectedAnswer) return;
-    
+
     const ans = spellingInput.join('').toLowerCase();
     const correctWord = spellingWord.toLowerCase();
     const correct = ans === correctWord;
@@ -215,7 +215,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
         setShieldsUsed(prev => prev + 1);
         setSpellingAttempts(0); // Reset attempts for the shielded retry
         setIncorrectIndices([]);
-        return; 
+        return;
       }
     }
 
@@ -233,53 +233,24 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
 
   const playAudio = async () => {
     if (isAudioLoading) return;
-    
+
     setIsAudioLoading(true);
     try {
-      const base64Audio = await generateSpeech(spellingWord);
-      if (base64Audio) {
-        try {
-          // Convert base64 to ArrayBuffer
-          const binaryString = window.atob(base64Audio);
-          const len = binaryString.length;
-          const bytes = new Uint8Array(len);
-          for (let i = 0; i < len; i++) {
-            bytes[i] = binaryString.charCodeAt(i);
-          }
+      // First attempt: Play from local .wav file
+      const audioPath = `/audio/${spellingWord.toLowerCase()}.wav`;
+      const audio = new Audio(audioPath);
 
-          // Create AudioContext
-          const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
-          
-          // Gemini TTS returns raw 16-bit PCM at 24kHz
-          const sampleRate = 24000;
-          const pcmData = new Int16Array(bytes.buffer);
-          const audioBuffer = audioContext.createBuffer(1, pcmData.length, sampleRate);
-          const channelData = audioBuffer.getChannelData(0);
-          
-          // Normalize PCM to float [-1, 1]
-          for (let i = 0; i < pcmData.length; i++) {
-            channelData[i] = pcmData[i] / 32768;
-          }
-          
-          const source = audioContext.createBufferSource();
-          source.buffer = audioBuffer;
-          source.connect(audioContext.destination);
-          source.start();
-        } catch (innerError) {
-          console.error("PCM playback failed:", innerError);
-          // Fallback to browser TTS
-          const utterance = new SpeechSynthesisUtterance(spellingWord);
-          utterance.rate = 0.8;
-          window.speechSynthesis.speak(utterance);
-        }
-      } else {
-        // Fallback to browser TTS if API fails
-        const utterance = new SpeechSynthesisUtterance(spellingWord);
-        utterance.rate = 0.8;
-        window.speechSynthesis.speak(utterance);
-      }
+      await new Promise((resolve, reject) => {
+        audio.oncanplaythrough = resolve;
+        audio.onerror = reject;
+        audio.play().catch(reject);
+      });
     } catch (error) {
-      console.error("Audio playback error:", error);
+      console.warn(`Local audio for "${spellingWord}" failed or not found, falling back to TTS.`, error);
+      // Fallback: browser TTS
+      const utterance = new SpeechSynthesisUtterance(spellingWord);
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
     } finally {
       setIsAudioLoading(false);
     }
@@ -294,7 +265,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
   };
 
   const finalizeBattle = () => {
-    const basePoints = score; 
+    const basePoints = score;
     const xpBonus = Math.floor(basePoints * (bonuses.xpBoost / 100));
     onComplete(score, goldEarned, basePoints + xpBonus);
   };
@@ -354,14 +325,14 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
       <div className="flex flex-col items-center justify-center p-6 max-w-2xl mx-auto w-full min-h-screen animate-in fade-in duration-500">
         <div className="bg-slate-800 rounded-3xl p-8 border-b-8 border-slate-950 w-full text-center relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500"></div>
-          
+
           <h2 className="text-5xl font-black text-white mb-2 mt-4">Victory!</h2>
           <p className="text-slate-400 mb-8 uppercase tracking-widest font-bold">Loot Collected</p>
 
           <div className="space-y-4 mb-8">
             <div className="bg-slate-900 rounded-2xl p-6 border border-slate-700">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-slate-400 font-bold uppercase text-sm flex items-center gap-2"><Coins size={16}/> Total Gold</span>
+                <span className="text-slate-400 font-bold uppercase text-sm flex items-center gap-2"><Coins size={16} /> Total Gold</span>
                 <span className="text-2xl font-black text-yellow-400">💰 {goldEarned}</span>
               </div>
               <div className="flex justify-between text-xs text-slate-500">
@@ -372,7 +343,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
 
             <div className="bg-slate-900 rounded-2xl p-6 border border-slate-700">
               <div className="flex justify-between items-center mb-2">
-                <span className="text-slate-400 font-bold uppercase text-sm flex items-center gap-2"><Sparkles size={16}/> Total XP</span>
+                <span className="text-slate-400 font-bold uppercase text-sm flex items-center gap-2"><Sparkles size={16} /> Total XP</span>
                 <span className="text-2xl font-black text-white">{basePoints + xpBonusTotal} XP</span>
               </div>
               <div className="flex justify-between text-xs text-slate-500">
@@ -391,7 +362,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
   }
 
   const getQuestionLabel = () => {
-    switch(qType) {
+    switch (qType) {
       case QuestionType.DEFINITION: return 'Find the Definition';
       case QuestionType.DEFINITION_TO_WORD: return 'Find the Word';
       case QuestionType.FILL_BLANK: return 'Context Challenge';
@@ -413,7 +384,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
     <div className="flex flex-col flex-grow max-w-2xl mx-auto w-full p-4 min-h-[600px] justify-center animate-in fade-in duration-300">
       <div className="flex justify-between items-center mb-6">
         <Button size="sm" variant="secondary" onClick={onExit}>Exit</Button>
-        
+
         <div className="flex gap-2">
           {/* Gold Counter */}
           <div className="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-full border border-yellow-500/30">
@@ -428,7 +399,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
               <span className="text-xs font-bold text-blue-200">{bonuses.maxShields - shieldsUsed}</span>
             </div>
           )}
-          
+
           {/* Score Indicator */}
           <div className="flex items-center gap-2 bg-slate-800 px-4 py-2 rounded-full border border-slate-700">
             <Trophy className="text-white w-4 h-4" />
@@ -438,7 +409,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
       </div>
 
       <div className="w-full bg-slate-700 h-3 rounded-full mb-8">
-        <div 
+        <div
           className="bg-indigo-500 h-3 rounded-full transition-all duration-300 shadow-[0_0_10px_rgba(99,102,241,0.5)]"
           style={{ width: `${progress}%` }}
         ></div>
@@ -449,16 +420,16 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
         <div className="absolute bottom-[-50px] left-[-50px] w-32 h-32 bg-purple-500 rounded-full opacity-10 blur-xl"></div>
 
         <div className="flex items-center justify-between w-full mb-6">
-           <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2">
             <Lightbulb className="text-indigo-400 w-4 h-4" />
             <h2 className="text-gray-400 font-bold uppercase tracking-widest text-xs">
               {getQuestionLabel()}
             </h2>
           </div>
-          
+
           {/* Hint Button */}
           {bonuses.maxHints > 0 && qType !== QuestionType.FILL_BLANK && (
-            <button 
+            <button
               onClick={useHint}
               disabled={hintsUsed >= bonuses.maxHints || !!selectedAnswer}
               className={`flex items-center gap-1 px-3 py-1 rounded-lg transition-all ${hintsUsed < bonuses.maxHints ? 'bg-yellow-500/20 text-yellow-400 hover:bg-yellow-500/30 active:scale-95 border border-yellow-500/30' : 'opacity-30 cursor-not-allowed text-slate-500'}`}
@@ -483,7 +454,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
           </h1>
         ) : qType === QuestionType.SPELLING ? (
           <div className="flex flex-col items-center mb-8 w-full">
-            <button 
+            <button
               onClick={playAudio}
               disabled={isAudioLoading}
               className="mb-6 p-6 bg-indigo-600 hover:bg-indigo-500 rounded-full shadow-lg transition-all active:scale-95 group disabled:opacity-50"
@@ -495,7 +466,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
               )}
             </button>
             <p className="text-slate-400 mb-6 text-sm uppercase font-bold tracking-widest italic">Listen and spell the word</p>
-            
+
             <div className="flex flex-wrap justify-center gap-2 mb-8">
               {spellingInput.map((char, idx) => (
                 <input
@@ -510,7 +481,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
                     const newInput = [...spellingInput];
                     newInput[idx] = val;
                     setSpellingInput(newInput);
-                    
+
                     // Clear incorrect highlight on change
                     if (incorrectIndices.includes(idx)) {
                       setIncorrectIndices(prev => prev.filter(i => i !== idx));
@@ -529,7 +500,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
                     }
                   }}
                   className={`w-10 h-12 md:w-12 md:h-14 text-center text-2xl font-black rounded-xl border-2 transition-all outline-none
-                    ${selectedAnswer 
+                    ${selectedAnswer
                       ? (isCorrect ? 'bg-green-500/20 border-green-500 text-green-400' : 'bg-red-500/20 border-red-500 text-red-400')
                       : incorrectIndices.includes(idx)
                         ? 'bg-red-500/20 border-red-500 text-red-400 animate-shake'
@@ -544,7 +515,7 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
                 {spellingAttempts > 0 && !selectedAnswer && (
                   <p className="text-red-400 font-bold text-sm animate-bounce">Try again! Check the red boxes.</p>
                 )}
-                <Button 
+                <Button
                   onClick={handleSpellingSubmit}
                   disabled={spellingInput.some(c => c === '')}
                   className="w-full"
@@ -571,9 +542,9 @@ export const BattleArena: React.FC<BattleArenaProps> = ({ words, user, onComplet
               if (selectedAnswer === opt) {
                 btnVariant = isCorrect ? 'success' : 'danger';
               } else if (selectedAnswer && !isCorrect) {
-                 if (opt === getCorrectText()) {
-                     btnVariant = 'success';
-                 }
+                if (opt === getCorrectText()) {
+                  btnVariant = 'success';
+                }
               }
 
               return (
