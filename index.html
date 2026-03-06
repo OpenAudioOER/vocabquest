@@ -1,35 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>VocabQuest</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;600;700&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
-    <style>
-      body {
-        font-family: 'Nunito', sans-serif;
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OER Tools</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#164ea5",
+            "primary-light": "#87b2f7",
+            "soft-yellow": "#fde293",
+            "bright-yellow": "#fed664",
+            "mint-green": "#cee9d8",
+            "sage-green": "#83c997",
+            "background-light": "#fdfdfd",
+            "surface-light": "#ffffff",
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          boxShadow: {
+            "playful": "0 10px 25px -5px rgba(0, 0, 0, 0.05)",
+            "glow-blue": "0 10px 20px -5px rgba(22, 78, 165, 0.2)",
+            "glow-yellow": "0 10px 20px -5px rgba(254, 214, 100, 0.3)",
+            "glow-green": "0 10px 20px -5px rgba(131, 201, 151, 0.3)",
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Lexend', sans-serif;
+      background-image: radial-gradient(#164ea510 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      grid-auto-flow: dense;
+    }
+
+    .bento-card-wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 768px) {
+      .bento-card-wide {
+        grid-column: span 1;
       }
-      h1, h2, h3, h4, h5, h6 {
-        font-family: 'Fredoka', sans-serif;
+    }
+
+    .bento-card-playful {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+
+    .bento-card-playful:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .animate-bounce-short {
+      animation: bounce-short 0.5s infinite;
+    }
+
+    @keyframes bounce-short {
+
+      0%,
+      100% {
+        transform: translateY(-5%);
       }
-      .animate-bounce-short {
-        animation: bounce-short 0.5s infinite;
+
+      50% {
+        transform: translateY(0);
       }
-      @keyframes bounce-short {
-        0%, 100% { transform: translateY(-5%); }
-        50% { transform: translateY(0); }
+    }
+
+    .animate-shake {
+      animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+    }
+
+    @keyframes shake {
+
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
       }
-      .animate-shake {
-        animation: shake 0.4s cubic-bezier(.36,.07,.19,.97) both;
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
       }
-      @keyframes shake {
-        10%, 90% { transform: translate3d(-1px, 0, 0); }
-        20%, 80% { transform: translate3d(2px, 0, 0); }
-        30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
-        40%, 60% { transform: translate3d(4px, 0, 0); }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
       }
-    </style>
+
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -42,10 +129,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body class="bg-slate-900 text-white">
-    <div id="root"></div>
+
+<body class="bg-background-light text-slate-900 selection:bg-primary/20">
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>

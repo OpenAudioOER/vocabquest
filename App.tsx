@@ -7,9 +7,9 @@ import { Navbar } from './components/layout/Navbar';
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <div className="min-h-screen bg-slate-900 text-white font-sans selection:bg-indigo-500 selection:text-white flex flex-col">
+      <div className="min-h-screen flex flex-col font-display selection:bg-primary/20">
         <Navbar />
-        <main className="flex-grow pt-20">
+        <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/vocabquest" element={<VocabQuest />} />
