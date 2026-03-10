@@ -300,8 +300,8 @@ export const DEMO_WORDS: VocabWord[] = [
 ];
 
 export const SPELLING_WORDS = [
-  'dancing', 'dimmed', 'skipped', 'rubbing', 'hiking',
-  'striped', 'flipped', 'wasting', 'snapping', 'traced',
-  'stripped', 'landed', 'tanning', 'pleasing',
-  'smelling', 'checking', 'phoning', 'dared', 'fainted'
+  'ache', 'attack', 'blank', 'blanket', 'crooked',
+  'drink', 'electric', 'jacket', 'junk', 'mistake',
+  'public', 'question', 'risk', 'shark', 'sink',
+  'squirrel', 'stomach', 'struck', 'topic', 'track'
 ];
