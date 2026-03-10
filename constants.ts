@@ -46,254 +46,272 @@ export const INITIAL_USER: UserProfile = {
 
 export const DEMO_WORDS: VocabWord[] = [
   {
-    id: 'dismissal',
-    word: 'dismissal',
-    definition: 'To allow to go away.',
+    id: 'vocab-suppose',
+    word: 'suppose',
+    definition: 'To think that something is likely to be true or to happen.',
     sentences: [
-      'Students are always excited at the end of the day when it is ______ time.',
-      'The principal announced the early ______ of all classes due to the heat wave.',
-      'After the meeting concluded, the manager gave a formal ______ to the staff.'
+      'I ______ it could rain this afternoon, so I\'d better wear my boots just in case.',
+      'Do you ______ we will have enough time to finish the project before lunch?',
+      'Since he didn\'t call, I ______ he completely forgot about our plans today.'
     ],
-    synonyms: ['release', 'discharge', 'departure'],
-    antonyms: ['arrival', 'hiring', 'retention'],
+    synonyms: ['guess', 'imagine', 'believe'],
+    antonyms: ['know', 'prove', 'doubt'],
     distractors: [
-      'To force someone to stay in a small room for a very long time without any windows.',
-      'To start a new job.',
-      'To arrive early.'
+      'To know for sure that something will happen.',
+      'To forcefully demand someone to do a task.',
+      'To completely forget about an important event.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'mission',
-    word: 'mission',
-    definition: 'An important goal or task; or a place where people get help.',
+    id: 'vocab-impose',
+    word: 'impose',
+    definition: 'To take advantage of someone\'s time or ask for too much.',
     sentences: [
-      'The students in math class were given the ______ to make a robot with graph paper.',
-      'There are many California ______ that are near Los Angeles, which are easy to visit.',
-      'The astronaut was focused on her ______ to repair the satellite in orbit.'
+      'It is considered rude to show up uninvited because you can ______ on them and their time.',
+      'I don\'t want to ______, but could you help me carry these heavy boxes inside?',
+      'The coach didn\'t want to ______ extra practice on the tired players after the long game.'
     ],
-    synonyms: ['assignment', 'objective', 'shelter'],
-    antonyms: ['aimlessness', 'hobby', 'vacation'],
+    synonyms: ['force', 'require', 'bother'],
+    antonyms: ['help', 'release', 'assist'],
     distractors: [
-      'A type of delicious fruit that grows on very tall trees in the tropical jungle.',
-      'A quick nap.',
-      'A small toy.'
+      'To politely request a small favor from a friend.',
+      'To give someone a thoughtful and unexpected gift.',
+      'To accidentally forget to invite someone over.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'permission',
-    word: 'permission',
-    definition: 'Approval to do something.',
+    id: 'vocab-propose',
+    word: 'propose',
+    definition: 'To suggest a plan or idea for others to think about.',
     sentences: [
-      'It is important to get ______ to use the restroom during class time.',
-      'My parents gave me ______ to go to the movies with my friends on Friday.',
-      'You must have written ______ before you can go on the school field trip.'
+      'Since it is a sunny, beautiful day, I ______ that we all go to the park to play.',
+      'The student council will ______ a new theme for the upcoming school dance.',
+      'I\'d like to ______ a different way to solve this challenging math puzzle.'
     ],
-    synonyms: ['authorization', 'consent', 'approval'],
-    antonyms: ['prohibition', 'denial', 'refusal'],
+    synonyms: ['suggest', 'recommend', 'offer'],
+    antonyms: ['reject', 'refuse', 'oppose'],
     distractors: [
-      'A loud sound made by a large truck when it is driving very fast down the highway.',
-      'A heavy rock.',
-      'A secret code.'
+      'To loudly disagree with someone\'s carefully made plan.',
+      'To secretly hide an object from your best friend.',
+      'To quickly forget an important piece of information.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'intermission',
-    word: 'intermission',
-    definition: 'A pause or stop between times of activity.',
+    id: 'vocab-oppose',
+    word: 'oppose',
+    definition: 'To be firmly against something or to disagree with it.',
     sentences: [
-      'Many performances at the theater have an ______ so guests can use the restroom.',
-      'During the ______ of the basketball game, the cheerleaders performed a dance.',
-      'We bought some popcorn and water during the fifteen-minute ______ of the play.'
+      'The students are really upset because they ______ the new dress code policies.',
+      'Many neighbors ______ the plan to build a noisy factory right next to their homes.',
+      'Even though it\'s popular, I strongly ______ cheating on the weekly history test.'
     ],
-    synonyms: ['break', 'pause', 'interval'],
-    antonyms: ['continuation', 'beginning', 'end'],
+    synonyms: ['resist', 'fight', 'challenge'],
+    antonyms: ['support', 'agree', 'accept'],
     distractors: [
-      'A very long race that lasts for three days and requires a lot of energy to finish.',
-      'A fast car.',
-      'A bright light.'
+      'To fully support and encourage a new school policy.',
+      'To happily agree with a difficult choice or decision.',
+      'To quietly ignore a very loudly debated conversation.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'commission',
-    word: 'commission',
-    definition: 'Payment for a completed job.',
+    id: 'vocab-disposable',
+    word: 'disposable',
+    definition: 'Made to be thrown away after being used only once.',
     sentences: [
-      'Many people who sell cars get paid based on ______, so they can be very persistent.',
-      'The artist received a ______ to paint a mural on the side of the new library.',
-      'She earned a large ______ after helping the family sell their house.'
+      'At parties, many people use ______ cups and plates to have an easy clean-up.',
+      'We bought a cheap ______ camera to take fun pictures during our camping trip.',
+      'It is better for the environment to use a real water bottle instead of a ______ one.'
     ],
-    synonyms: ['fee', 'payment', 'percentage'],
-    antonyms: ['salary', 'debt', 'loss'],
+    synonyms: ['throwaway', 'temporary', 'single-use'],
+    antonyms: ['reusable', 'permanent', 'lasting'],
     distractors: [
-      'A type of cold weather that happens only during the middle of the winter season.',
-      'A broken tool.',
-      'A lost dog.'
+      'Made to be kept and cherished for many long years.',
+      'Designed to be incredibly strong and very unbreakable.',
+      'Meant to be carefully washed and used every single day.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'misspeak',
-    word: 'misspeak',
-    definition: 'To speak or pronounce incorrectly.',
+    id: 'vocab-composition',
+    word: 'composition',
+    definition: 'What something is made of, or the ingredients it contains.',
     sentences: [
-      'When a student is nervous during a presentation, sometimes they ______.',
-      'I didn\'t mean to say that; I simply happened to ______ during our conversation.',
-      'It is important to correct yourself if you ______ a difficult word in class.'
+      'The ______ of slime is fairly simple since it only contains borax, glue, and water.',
+      'Scientists studied the rocky ______ of the strange meteor that fell from the sky.',
+      'Our music teacher asked us to write a short musical ______ for the spring concert.'
     ],
-    synonyms: ['mumble', 'err', 'misstate'],
-    antonyms: ['articulate', 'enunciate', 'speak clearly'],
+    synonyms: ['makeup', 'structure', 'mixture'],
+    antonyms: ['destruction', 'ruin', 'separation'],
     distractors: [
-      'To sing a beautiful song in front of a very large audience at a talent show.',
-      'To run fast.',
-      'To sleep late.'
+      'The outer wrapping used to protect a newly bought item.',
+      'The process of completely destroying a tall building.',
+      'The bright color painted on the outside of a small box.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'emissions',
-    word: 'emissions',
-    definition: 'Light, gas, or heat coming from somewhere.',
+    id: 'vocab-deposit',
+    word: 'deposit',
+    definition: 'To put money into a bank account for safekeeping.',
     sentences: [
-      'A lot of people are trying to lower the ______ coming from their homes.',
-      'The factory was criticized for the dark ______ coming from its tall chimneys.',
-      'Electric cars are popular because they produce zero ______ while driving.'
+      'The bakery made a large ______ in the bank because they sold three expensive wedding cakes.',
+      'Tom will ______ the extra money he earned from mowing lawns into his savings account.',
+      'You must make a small ______ to reserve the community center for your birthday party.'
     ],
-    synonyms: ['discharge', 'radiation', 'exhaust'],
-    antonyms: ['absorption', 'intake', 'collection'],
+    synonyms: ['save', 'bank', 'entrust'],
+    antonyms: ['withdraw', 'take', 'spend'],
     distractors: [
-      'A collection of old stamps that someone has kept in a book for many years.',
-      'A soft pillow.',
-      'A cold drink.'
+      'To completely spend all of your money on toys and games.',
+      'To suddenly drop a heavy object onto the hard floor.',
+      'To slowly take money out of a broken piggy bank.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'admission',
-    word: 'admission',
-    definition: 'Permission to enter; or an act of admitting the truth.',
+    id: 'vocab-posture',
+    word: 'posture',
+    definition: 'The way a person holds their body when sitting or standing.',
     sentences: [
-      'Many Disneyland passholders try to get early ______ into the park.',
-      'He later made an ______ of guilt when he saw the security camera footage.',
-      'The price of ______ to the museum is five dollars for students.'
+      'It is important to sit on the edge of your chair and use good ______ when playing an instrument.',
+      'The doctor said my bad ______ was causing the pain in my neck and shoulders.',
+      'The dancer practiced keeping an upright ______ while balancing the heavy book on her head.'
     ],
-    synonyms: ['entry', 'confession', 'access'],
-    antonyms: ['exclusion', 'denial', 'exit'],
+    synonyms: ['stance', 'pose', 'carriage'],
+    antonyms: ['slouch', 'slump', 'droop'],
     distractors: [
-      'A very tall mountain that is covered in thick white snow all year long.',
-      'A small bug.',
-      'A new book.'
+      'The specific way a person speaks when they are giving a big speech.',
+      'The colorful clothes a person chooses to wear on a very special day.',
+      'The quick speed at which a person can run in a long distance race.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'omission',
-    word: 'omission',
-    definition: 'Something left out, removed, or not done.',
+    id: 'vocab-proposal',
+    word: 'proposal',
+    definition: 'A formal plan or suggestion that is given to others to consider.',
     sentences: [
-      'The ______ of the letter "n" changes the boy\'s name Evan to the girl\'s name Eva.',
-      'The editor noticed the ______ of an important chapter in the first draft.',
-      'Leaving out your name on the test was a serious ______ that caused a delay.'
+      'The school is reviewing three different ______ for installing the new playground equipment.',
+      'The mayor presented a surprising ______ to build a new library in the center of town.',
+      'We voted on the ______ to have pizza every Friday for the rest of the school year.'
     ],
-    synonyms: ['exclusion', 'gap', 'failure'],
-    antonyms: ['inclusion', 'addition', 'completion'],
+    synonyms: ['plan', 'suggestion', 'offer'],
+    antonyms: ['refusal', 'rejection', 'denial'],
     distractors: [
-      'A bright red balloon that is floating away into the sky on a windy afternoon.',
-      'A loud bark.',
-      'A sweet cake.'
+      'A completed building that has just finished being fully constructed.',
+      'A silly joke told during the middle of a serious presentation.',
+      'An angry letter written to complain about bad service.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'missionary',
-    word: 'missionary',
-    definition: 'Someone who goes to another country to teach about their religion.',
+    id: 'vocab-imposter',
+    word: 'imposter',
+    definition: 'A person who tricks others by pretending to be someone else.',
     sentences: [
-      'There are two schools in the village, and each one is run by a different ______.',
-      'The ______ traveled to a remote island to help build a new community center.',
-      'He spent three years working as a ______ in South America.'
+      'The ______ tricked the family into giving him money by pretending to be a famous lawyer.',
+      'The security guard quickly realized the man in the uniform was actually an ______.',
+      'In the mystery game, you have to figure out which player is the sneaky ______.'
     ],
-    synonyms: ['evangelist', 'messenger', 'envoy'],
-    antonyms: ['atheist', 'local', 'native'],
+    synonyms: ['fake', 'fraud', 'pretender'],
+    antonyms: ['expert', 'professional', 'original'],
     distractors: [
-      'A type of fast airplane that can travel across the entire ocean in a few hours.',
-      'A sharp pen.',
-      'A blue ball.'
+      'A highly trusted teacher who helps students study for exams.',
+      'A brave police officer who solves very difficult local crimes.',
+      'A very honest person who always tells the complete truth.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'transmission',
-    word: 'transmission',
-    definition: 'A system of gears in a vehicle; or the sending of information.',
+    id: 'vocab-composure',
+    word: 'composure',
+    definition: 'Remaining calm and in control of your emotions during a tough situation.',
     sentences: [
-      'When cars get older, sometimes they need their ______ repaired.',
-      'The radio ______ suddenly cut out because of a power outage.',
-      'The ______ of the virus can be prevented by washing your hands frequently.'
+      'The young ice skater showed great ______ when she went onto the ice to begin her routine.',
+      'Even when the fire alarm loudly rang, the teacher kept her ______ and guided the class outside.',
+      'It is hard to keep your ______ when you are feeling very angry about losing a game.'
     ],
-    synonyms: ['broadcast', 'transfer', 'gearbox'],
-    antonyms: ['reception', 'stagnation', 'blockage'],
+    synonyms: ['calmness', 'coolness', 'poise'],
+    antonyms: ['panic', 'anger', 'anxiety'],
     distractors: [
-      'A large bowl of soup that is very hot and has a lot of vegetables inside.',
-      'A tiny seed.',
-      'A old shoe.'
+      'Feeling extreme panic and wildly running around in circles.',
+      'Showing deep sadness by loudly crying in front of everyone.',
+      'Feeling completely exhausted after running a very long race.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'inadmissible',
-    word: 'inadmissible',
-    definition: 'Not allowed, especially as evidence in a trial.',
+    id: 'vocab-composite',
+    word: 'composite',
+    definition: 'Something that is made up of several different parts put together.',
     sentences: [
-      'The confession might be ruled ______ if it was given under pressure.',
-      'The judge decided the photos were ______ because they were taken illegally.',
-      'Hearsay is often considered ______ in a formal court of law.'
+      'Many cultures are a ______ of different traditions that came from people settling there over time.',
+      'The weird picture was a ______ of three different animal faces glued into one image.',
+      'The new airplane wings are made from a strong ______ material of plastic and glass.'
     ],
-    synonyms: ['unacceptable', 'invalid', 'prohibited'],
-    antonyms: ['allowable', 'valid', 'permitted'],
+    synonyms: ['blend', 'combination', 'mixture'],
+    antonyms: ['pure', 'single', 'separate'],
     distractors: [
-      'A very friendly dog that likes to wag its tail and bark at the mailman.',
-      'A fast bike.',
-      'A warm sun.'
+      'Something that is made of only one completely pure ingredient.',
+      'A very simple object that is broken into many tiny pieces.',
+      'A completely solid rock that is extremely smooth to touch.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'missive',
-    word: 'missive',
-    definition: 'A message in writing, such as a letter.',
+    id: 'vocab-imposition',
+    word: 'imposition',
+    definition: 'Something asked of you that is unfair or a burden on your time.',
     sentences: [
-      'He wrote all about his trip to Machu Picchu in his last ______ from South America.',
-      'The queen sent a secret ______ to her generals across the border.',
-      'I received a long ______ from my pen pal who lives in France.'
+      'Turning in an assignment late is an ______ on the teacher because it affects their workload.',
+      'I know it\'s a huge ______, but could you drive me to the airport at 4:00 AM tomorrow?',
+      'The unexpected house guests were an ______ because we didn\'t have enough food for dinner.'
     ],
-    synonyms: ['letter', 'message', 'note'],
-    antonyms: ['silence', 'speech', 'conversation'],
+    synonyms: ['burden', 'bother', 'inconvenience'],
+    antonyms: ['help', 'benefit', 'advantage'],
     distractors: [
-      'A large piece of heavy furniture that is very difficult to move up the stairs.',
-      'A cold wind.',
-      'A red apple.'
+      'A wonderful gift that someone gives you completely by surprise.',
+      'A very helpful action that makes your difficult day much easier.',
+      'A funny joke that makes everyone quickly laugh out loud.'
     ],
     masteryLevel: 0
   },
   {
-    id: 'remiss',
-    word: 'remiss',
-    definition: 'Characterized by neglect or carelessness.',
+    id: 'vocab-juxtapose',
+    word: 'juxtapose',
+    definition: 'To place two things side-by-side to compare or contrast them.',
     sentences: [
-      'Some students can be ______ about carrying out their responsibility of filling out their reading log.',
-      'I would be ______ if I didn\'t thank you for all your hard work on this project.',
-      'The guard was ______ in his duties, allowing the intruder to enter the building.'
+      'Sally would ______ the photographs on her computer to see the small differences between them.',
+      'The art teacher asked us to ______ a drawing of a bright apple next to a drawing of a dark plum.',
+      'The author likes to ______ the rich king\'s castle with the poor farmer\'s tiny wooden hut.'
     ],
-    synonyms: ['negligent', 'careless', 'thoughtless'],
-    antonyms: ['careful', 'diligent', 'attentive'],
+    synonyms: ['compare', 'contrast', 'pair'],
+    antonyms: ['separate', 'divide', 'isolate'],
     distractors: [
-      'A very bright star that shines in the night sky and is easy for everyone to see.',
-      'A happy face.',
-      'A new toy.'
+      'To completely separate two things so they never touch each other.',
+      'To quickly throw two items very far away into the deep garbage.',
+      'To carefully paint a single beautiful picture of a tall mountain.'
+    ],
+    masteryLevel: 0
+  },
+  {
+    id: 'vocab-compost',
+    word: 'compost',
+    definition: 'Nutrient-rich dirt made from decaying plants that helps gardens grow.',
+    sentences: [
+      'Timothy added ______ to the soil to help his plants produce more fresh fruits and vegetables.',
+      'We put our rotten apple cores and old leaves into the ______ bin in the backyard.',
+      'Using natural ______ is much better for the earth than using dangerous chemical fertilizers.'
+    ],
+    synonyms: ['fertilizer', 'mulch', 'soil'],
+    antonyms: ['trash', 'garbage', 'poison'],
+    distractors: [
+      'Toxic chemicals that are very harmful to growing plants.',
+      'A clean basket used to carry fresh fruits from the market.',
+      'Fresh water used to wash dirty vegetables in the kitchen sink.'
     ],
     masteryLevel: 0
   }
