@@ -21,7 +21,7 @@ export const VocabQuest: React.FC = () => {
     });
 
     const [words, setWords] = useState<VocabWord[]>(() => {
-        const saved = localStorage.getItem('vq_words_v7');
+        const saved = localStorage.getItem('vq_words_v8');
         return saved ? JSON.parse(saved) : DEMO_WORDS;
     });
 
@@ -34,7 +34,7 @@ export const VocabQuest: React.FC = () => {
     }, [user]);
 
     useEffect(() => {
-        localStorage.setItem('vq_words_v7', JSON.stringify(words));
+        localStorage.setItem('vq_words_v8', JSON.stringify(words));
     }, [words]);
 
     // Actions
