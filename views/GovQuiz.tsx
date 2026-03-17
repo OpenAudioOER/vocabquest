@@ -13,6 +13,7 @@ export const GovQuiz: React.FC = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [score, setScore] = useState(0);
+    const [isShaking, setIsShaking] = useState(false);
 
     const topics = Object.keys(govQuizData);
     const levels = ['Level 1', 'Level 2'];
@@ -42,6 +43,9 @@ export const GovQuiz: React.FC = () => {
                 origin: { y: 0.6 },
                 colors: ['#164ea5', '#87b3f8', '#fed664', '#83c997']
             });
+        } else {
+            setIsShaking(true);
+            setTimeout(() => setIsShaking(false), 500);
         }
     };
 
@@ -170,7 +174,7 @@ export const GovQuiz: React.FC = () => {
     const isAnswered = selectedOption !== null;
 
     return (
-        <div className="min-h-screen bg-background-light py-8 px-4 sm:px-6">
+        <div className={`min-h-screen bg-background-light py-8 px-4 sm:px-6 ${isShaking ? 'animate-shake' : ''}`}>
             <div className="max-w-3xl mx-auto">
                 {/* Header & Progress */}
                 <div className="flex items-center justify-between mb-8 bg-white p-4 rounded-2xl shadow-sm border border-slate-100">
