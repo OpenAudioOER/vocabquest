@@ -50,16 +50,19 @@ export const Home: React.FC = () => {
                         </div>
                     </Link>
 
-                    {/* Placeholder: Future Tool */}
-                    <div className="group bg-soft-yellow rounded-3xl border-2 border-bright-yellow/30 p-8 shadow-glow-yellow bento-card-playful flex flex-col h-80 justify-center items-center text-center opacity-70">
-                        <div className="w-16 h-16 rounded-2xl bg-bright-yellow text-slate-900 flex items-center justify-center mb-6 shadow-md">
-                            <span className="material-symbols-outlined text-[32px]">science</span>
+                    {/* Card: Gov Quiz */}
+                    <Link
+                        to="/govquiz"
+                        className="group bg-soft-yellow rounded-3xl border-2 border-bright-yellow/30 p-8 shadow-glow-yellow bento-card-playful flex flex-col h-80 justify-center items-center text-center cursor-pointer"
+                    >
+                        <div className="w-16 h-16 rounded-2xl bg-bright-yellow text-slate-900 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
+                            <span className="material-symbols-outlined text-[32px]">account_balance</span>
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-3">Next Project...</h3>
-                        <p className="text-slate-700 font-medium italic">
-                            Building the future of OER tools.
+                        <h3 className="text-2xl font-bold text-slate-900 mb-3">Gov Quiz</h3>
+                        <p className="text-slate-700 font-medium leading-relaxed">
+                            College-level practice for American Government. Master the concepts for your exam.
                         </p>
-                    </div>
+                    </Link>
 
                     {/* Placeholder: Community */}
                     <div className="group bg-mint-green rounded-3xl border-2 border-sage-green/20 p-8 shadow-glow-green bento-card-playful flex flex-col h-80 justify-center items-center text-center opacity-70">

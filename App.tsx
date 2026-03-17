@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './views/Home';
 import { VocabQuest } from './views/VocabQuest';
+import { GovQuiz } from './views/GovQuiz';
 import { Navbar } from './components/layout/Navbar';
 
 const App: React.FC = () => {
@@ -13,6 +14,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/vocabquest" element={<VocabQuest />} />
+            <Route path="/govquiz" element={<GovQuiz />} />
           </Routes>
         </main>
       </div>

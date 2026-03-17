@@ -26,7 +26,7 @@ export const Navbar: React.FC = () => {
                         ? 'bg-slate-800 text-slate-400 border-slate-700'
                         : 'bg-slate-50 text-slate-400 border-slate-100'
                     }`}>
-                    Ms. Arbuckle's 4th Grade Class
+                    {isVocabQuest ? "Ms. Arbuckle's 4th Grade Class" : "Prof. Barrick's Political Science Class"}
                 </div>
             )}
 
