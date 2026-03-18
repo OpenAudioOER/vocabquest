@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, CheckCircle2, XCircle, ArrowRight, RotateCcw, Award } from 'lucide-react';
+import { BookOpen, CheckCircle2, XCircle, ArrowRight, RotateCcw, Award, Landmark, Shield, Scale, Star, Zap, Info, PlayCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { govQuizData, QuizQuestion } from '../data/govQuizData';
 
@@ -78,31 +78,68 @@ export const GovQuiz: React.FC = () => {
         }
     }, [gameState, score, questions.length]);
 
+    const getTopicIcon = (t: string) => {
+        switch(t) {
+            case 'Federalism': return <Landmark className="mb-3 text-primary" size={36} />;
+            case 'Civil Liberties': return <Shield className="mb-3 text-primary" size={36} />;
+            case 'Civil Rights': return <Scale className="mb-3 text-primary" size={36} />;
+            default: return <BookOpen className="mb-3 text-primary" size={36} />;
+        }
+    };
+
+    const getLevelIcon = (l: string) => {
+        switch(l) {
+            case 'Level 1': return <Star className="mb-3 text-amber-500" size={36} />;
+            case 'Level 2': return <Zap className="mb-3 text-orange-500" size={36} />;
+            default: return <Star className="mb-3 text-slate-400" size={36} />;
+        }
+    };
+
     if (gameState === 'setup') {
         return (
             <div className="min-h-screen bg-background-light py-12 px-6 flex items-center justify-center">
-                <div className="max-w-2xl w-full bg-white rounded-3xl shadow-playful p-10 border-2 border-slate-100">
+                <div className="max-w-3xl w-full bg-white rounded-3xl shadow-playful p-10 border-2 border-slate-100">
                     <div className="flex items-center space-x-4 mb-8">
-                        <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg">
-                            <BookOpen size={28} />
+                        <div className="w-16 h-16 rounded-2xl bg-primary text-white flex items-center justify-center shadow-lg shadow-primary/30">
+                            <BookOpen size={32} />
                         </div>
-                        <h1 className="text-3xl font-extrabold text-slate-900">American Government Prep</h1>
+                        <div>
+                            <h1 className="text-3xl font-black text-slate-900">American Government Prep</h1>
+                            <p className="text-slate-500 font-medium">Practice quizzes designed for college students.</p>
+                        </div>
                     </div>
 
-                    <div className="space-y-8">
+                    <div className="bg-blue-50/80 border border-blue-100 rounded-2xl p-6 mb-10 flex items-start shadow-sm">
+                        <div className="bg-white p-2 rounded-xl shadow-sm mr-4 mt-1 border border-blue-50">
+                            <Info className="text-primary" size={24} />
+                        </div>
                         <div>
-                            <h2 className="text-xl font-bold text-slate-800 mb-4">Select Topic</h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                            <h3 className="text-xl font-bold text-slate-800 mb-2">How it works</h3>
+                            <p className="text-slate-600 leading-relaxed text-lg">
+                                Select a topic and difficulty below to begin. We'll generate a <strong>randomized 15-question quiz</strong> just for you. 
+                                <strong> Want more practice?</strong> You can repeat the quiz as many times as you like to get a brand new set of questions!
+                            </p>
+                        </div>
+                    </div>
+
+                    <div className="space-y-10">
+                        <div>
+                            <h2 className="text-2xl font-bold text-slate-800 mb-5 relative inline-block">
+                                1. Select Topic
+                                <div className="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary/20 rounded-full"></div>
+                            </h2>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
                                 {topics.map(t => (
                                     <button
                                         key={t}
                                         onClick={() => setTopic(t)}
-                                        className={`p-4 rounded-2xl border-2 font-semibold transition-all ${
+                                        className={`p-6 flex flex-col items-center justify-center rounded-2xl border-2 font-bold text-lg transition-all duration-300 ${
                                             topic === t 
-                                            ? 'bg-primary-light/20 border-primary text-primary shadow-sm' 
-                                            : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-primary-light hover:bg-slate-100'
+                                            ? 'bg-primary/5 border-primary text-primary shadow-md scale-105 transform' 
+                                            : 'bg-white border-slate-200 text-slate-600 hover:border-primary-light hover:bg-slate-50 hover:-translate-y-1 hover:shadow-sm'
                                         }`}
                                     >
+                                        {getTopicIcon(t)}
                                         {t}
                                     </button>
                                 ))}
@@ -110,18 +147,22 @@ export const GovQuiz: React.FC = () => {
                         </div>
 
                         <div>
-                            <h2 className="text-xl font-bold text-slate-800 mb-4">Select Difficulty</h2>
-                            <div className="grid grid-cols-2 gap-4">
+                            <h2 className="text-2xl font-bold text-slate-800 mb-5 relative inline-block">
+                                2. Select Difficulty
+                                <div className="absolute -bottom-2 left-0 w-1/2 h-1 bg-bright-yellow/40 rounded-full"></div>
+                            </h2>
+                            <div className="grid grid-cols-2 gap-5">
                                 {levels.map(l => (
                                     <button
                                         key={l}
                                         onClick={() => setLevel(l)}
-                                        className={`p-4 rounded-2xl border-2 font-semibold transition-all ${
+                                        className={`p-6 flex flex-col items-center justify-center rounded-2xl border-2 font-bold text-lg transition-all duration-300 ${
                                             level === l 
-                                            ? 'bg-soft-yellow/50 border-bright-yellow text-slate-900 shadow-sm' 
-                                            : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-bright-yellow hover:bg-slate-100'
+                                            ? 'bg-soft-yellow/40 border-bright-yellow text-slate-900 shadow-md scale-105 transform' 
+                                            : 'bg-white border-slate-200 text-slate-600 hover:border-bright-yellow hover:bg-slate-50 hover:-translate-y-1 hover:shadow-sm'
                                         }`}
                                     >
+                                        {getLevelIcon(l)}
                                         {l}
                                     </button>
                                 ))}
@@ -131,10 +172,10 @@ export const GovQuiz: React.FC = () => {
                         <button
                             onClick={startQuiz}
                             disabled={!topic || !level}
-                            className="w-full py-4 rounded-2xl bg-primary text-white font-bold text-lg shadow-glow-blue hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-4 flex items-center justify-center group"
+                            className="w-full py-5 rounded-2xl bg-primary text-white font-black text-xl shadow-glow-blue hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-8 flex items-center justify-center group"
                         >
-                            Begin Practice 
-                            <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+                            <PlayCircle className="mr-3 group-hover:scale-110 transition-transform" size={28} />
+                            Start Randomized Quiz
                         </button>
                     </div>
                 </div>

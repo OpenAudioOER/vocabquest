@@ -1816,37 +1816,6 @@ export const govQuizData: GovQuizData = {
                 "correctAnswer": "A"
             },
             {
-                "id": "Civ-2-5",
-                "question": "What is the primary purpose of the 'Lemon Test' established by the Supreme Court?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "To determine if a government action or law violates the Establishment Clause of the First Amendment.",
-                        "isCorrect": true,
-                        "rationale": "The Lemon test provides three criteria (secular purpose, neutral effect, and no excessive entanglement) to evaluate the constitutionality of laws interacting with religion."
-                    },
-                    {
-                        "label": "B",
-                        "text": "To decide whether a person's religious practice can be restricted by a 'compelling government interest'.",
-                        "isCorrect": false,
-                        "rationale": "This describes the Sherbert test, which is used for Free Exercise Clause cases rather than the Establishment Clause."
-                    },
-                    {
-                        "label": "C",
-                        "text": "To evaluate whether speech constitutes an 'imminent lawless action' that can be prohibited.",
-                        "isCorrect": false,
-                        "rationale": "This describes the Brandenburg standard for free speech, not religious establishment."
-                    },
-                    {
-                        "label": "D",
-                        "text": "To identify if a search and seizure conducted by police was 'unreasonable' under the Fourth Amendment.",
-                        "isCorrect": false,
-                        "rationale": "Fourth Amendment cases focus on probable cause and warrants, not the criteria found in the Lemon test."
-                    }
-                ],
-                "correctAnswer": "A"
-            },
-            {
                 "id": "Civ-2-6",
                 "question": "According to the First Amendment's Free Exercise Clause, when can the government legally restrict a religious practice?",
                 "options": [
@@ -2064,68 +2033,6 @@ export const govQuizData: GovQuizData = {
                 "correctAnswer": "A"
             },
             {
-                "id": "Civ-2-13",
-                "question": "In the context of the Sixth Amendment, what is a 'plea bargain'?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "An agreement where a defendant pleads guilty to a lesser charge in exchange for a more lenient sentence.",
-                        "isCorrect": true,
-                        "rationale": "Plea bargains resolve the vast majority of criminal cases, allowing both the defense and prosecution to avoid the uncertainty of a full trial."
-                    },
-                    {
-                        "label": "B",
-                        "text": "A request by the defense for the judge to dismiss the case due to lack of evidence.",
-                        "isCorrect": false,
-                        "rationale": "This is typically called a motion to dismiss or a motion for a directed verdict."
-                    },
-                    {
-                        "label": "C",
-                        "text": "The process by which jurors deliberate in secret to reach a unanimous verdict.",
-                        "isCorrect": false,
-                        "rationale": "This describes jury deliberation, not a 'bargain' between the prosecution and defense."
-                    },
-                    {
-                        "label": "D",
-                        "text": "A constitutional requirement that all defendants receive a free attorney regardless of their income.",
-                        "isCorrect": false,
-                        "rationale": "The right to an attorney is a Sixth Amendment guarantee (Gideon v. Wainwright), but the term 'plea bargain' refers to the settlement process."
-                    }
-                ],
-                "correctAnswer": "A"
-            },
-            {
-                "id": "Civ-2-14",
-                "question": "The 'Eminent Domain' power of the government is limited by which requirement in the Fifth Amendment?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "The government must provide 'just compensation' to the property owner.",
-                        "isCorrect": true,
-                        "rationale": "While the government can take private property for public use, the Takings Clause requires that the owner be paid a fair market value."
-                    },
-                    {
-                        "label": "B",
-                        "text": "The government must obtain the owner's written consent before taking the land.",
-                        "isCorrect": false,
-                        "rationale": "Eminent domain is the power to take property *without* consent, provided it is for public use and compensation is paid."
-                    },
-                    {
-                        "label": "C",
-                        "text": "The land must be used exclusively for military purposes during a time of war.",
-                        "isCorrect": false,
-                        "rationale": "Eminent domain can be used for any legitimate 'public use,' such as roads, schools, or (controversially) economic redevelopment."
-                    },
-                    {
-                        "label": "D",
-                        "text": "The property owner must be given a chance to buy the land back at the same price.",
-                        "isCorrect": false,
-                        "rationale": "There is no constitutional right to repurchase land taken through eminent domain."
-                    }
-                ],
-                "correctAnswer": "A"
-            },
-            {
                 "id": "Civ-2-15",
                 "question": "Why is the Ninth Amendment considered significant in the debate over the 'Right to Privacy'?",
                 "options": [
@@ -2183,37 +2090,6 @@ export const govQuizData: GovQuizData = {
                         "text": "Placing a religious monument in a courtroom to influence the outcome of a trial.",
                         "isCorrect": false,
                         "rationale": "While some displays are allowed for historical context, the primary purpose cannot be to promote a specific faith in a judicial setting."
-                    }
-                ],
-                "correctAnswer": "A"
-            },
-            {
-                "id": "Civ-2-17",
-                "question": "What does the 'Undue Burden' test evaluate in the context of abortion rights?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "Whether a state law has the purpose or effect of placing a substantial obstacle in the path of a woman seeking an abortion.",
-                        "isCorrect": true,
-                        "rationale": "This standard allows states to regulate abortion as long as they do not make it prohibitively difficult for a woman to exercise her right."
-                    },
-                    {
-                        "label": "B",
-                        "text": "Whether an abortion procedure is too expensive for the average citizen to afford.",
-                        "isCorrect": false,
-                        "rationale": "The test focuses on the legality and accessibility of regulations, not the market price of the procedure."
-                    },
-                    {
-                        "label": "C",
-                        "text": "Whether the father of the child is financially burdened by the woman's decision.",
-                        "isCorrect": false,
-                        "rationale": "Spousal notification was actually struck down as an 'undue burden' in Planned Parenthood v. Casey."
-                    },
-                    {
-                        "label": "D",
-                        "text": "Whether the state's budget is negatively impacted by providing reproductive health services.",
-                        "isCorrect": false,
-                        "rationale": "The test evaluates the burden on the individual's right, not the state's finances."
                     }
                 ],
                 "correctAnswer": "A"
@@ -2338,37 +2214,6 @@ export const govQuizData: GovQuizData = {
                         "text": "Protection of the Writ of Habeas Corpus",
                         "isCorrect": false,
                         "rationale": "The 'Great Writ' is one of the fundamental protections included in the original document by the framers."
-                    }
-                ],
-                "correctAnswer": "A"
-            },
-            {
-                "id": "Civ-2-22",
-                "question": "What was the core outcome of the Supreme Court case 'District of Columbia v. Heller' (2008)?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "It established an individual right to keep and bear arms for traditionally lawful purposes like self-defense.",
-                        "isCorrect": true,
-                        "rationale": "The Court clarified that the Second Amendment is not tied solely to militia service but protects an individual's right to possess a firearm."
-                    },
-                    {
-                        "label": "B",
-                        "text": "It ruled that only the National Guard has the right to possess modern firearms.",
-                        "isCorrect": false,
-                        "rationale": "This was the 'collective rights' argument that the Court rejected in the Heller decision."
-                    },
-                    {
-                        "label": "C",
-                        "text": "It applied the Second Amendment to all 50 states immediately.",
-                        "isCorrect": false,
-                        "rationale": "Heller only applied to federal enclaves like D.C.; the application to states (incorporation) happened later in McDonald v. Chicago."
-                    },
-                    {
-                        "label": "D",
-                        "text": "It prohibited all regulations on the sale of semi-automatic weapons.",
-                        "isCorrect": false,
-                        "rationale": "The Court explicitly stated that the right to bear arms is not absolute and allows for some reasonable regulations."
                     }
                 ],
                 "correctAnswer": "A"
@@ -2874,68 +2719,6 @@ export const govQuizData: GovQuizData = {
                 "correctAnswer": "B"
             },
             {
-                "id": "Civ-1-15",
-                "question": "The 'strict scrutiny' standard is applied by courts in cases involving discrimination based on:",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "Age or economic status",
-                        "isCorrect": false,
-                        "rationale": "Discrimination based on age or income is typically reviewed under the more lenient 'rational basis' test."
-                    },
-                    {
-                        "label": "B",
-                        "text": "Race, ethnicity, or religion",
-                        "isCorrect": true,
-                        "rationale": "Strict scrutiny is the most rigorous standard of judicial review, requiring the government to prove a compelling interest for the discrimination."
-                    },
-                    {
-                        "label": "C",
-                        "text": "Gender or sex",
-                        "isCorrect": false,
-                        "rationale": "Gender discrimination is usually reviewed under 'intermediate scrutiny,' which is less rigorous than strict scrutiny."
-                    },
-                    {
-                        "label": "D",
-                        "text": "Driving ability or vision",
-                        "isCorrect": false,
-                        "rationale": "Safety-based discrimination like vision requirements for drivers is reviewed under the rational basis test."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
-                "id": "Civ-1-16",
-                "question": "Which standard of judicial review requires the government to show that a discriminatory law is 'substantially related to an important governmental objective'?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "Strict scrutiny",
-                        "isCorrect": false,
-                        "rationale": "Strict scrutiny requires a 'compelling' interest and the 'least restrictive means,' a much higher bar."
-                    },
-                    {
-                        "label": "B",
-                        "text": "Intermediate scrutiny",
-                        "isCorrect": true,
-                        "rationale": "Intermediate scrutiny is the standard used for gender-based discrimination, placing the burden of proof on the government."
-                    },
-                    {
-                        "label": "C",
-                        "text": "Rational basis test",
-                        "isCorrect": false,
-                        "rationale": "Rational basis only requires a 'legitimate' interest and is the easiest standard for the government to meet."
-                    },
-                    {
-                        "label": "D",
-                        "text": "The exclusionary rule",
-                        "isCorrect": false,
-                        "rationale": "The exclusionary rule is a criminal procedure rule regarding evidence, not a standard for equal protection review."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
                 "id": "Civ-1-17",
                 "question": "Civil disobedience is best defined as:",
                 "options": [
@@ -3248,68 +3031,6 @@ export const govQuizData: GovQuizData = {
                 "correctAnswer": "A"
             },
             {
-                "id": "Civ-2-2",
-                "question": "Which legal standard would a court apply to a law that treats 16-year-olds differently than 21-year-olds regarding the right to purchase alcohol?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "Strict scrutiny",
-                        "isCorrect": false,
-                        "rationale": "This standard is reserved for discrimination based on race, ethnicity, or religion, rather than age."
-                    },
-                    {
-                        "label": "B",
-                        "text": "Intermediate scrutiny",
-                        "isCorrect": false,
-                        "rationale": "This level is specifically used for cases involving gender or sex discrimination."
-                    },
-                    {
-                        "label": "C",
-                        "text": "Rational basis test",
-                        "isCorrect": true,
-                        "rationale": "The rational basis test applies to most forms of discrimination, such as age, where the government only needs to show the law is reasonably related to a legitimate interest like public safety."
-                    },
-                    {
-                        "label": "D",
-                        "text": "The Lemon test",
-                        "isCorrect": false,
-                        "rationale": "The Lemon test relates to the Establishment Clause of the First Amendment, not equal protection analysis."
-                    }
-                ],
-                "correctAnswer": "C"
-            },
-            {
-                "id": "Civ-2-3",
-                "question": "Under the 'strict scrutiny' standard, what must the government prove to justify a discriminatory law?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "The law is substantially related to an important governmental objective.",
-                        "isCorrect": false,
-                        "rationale": "This describes the intermediate scrutiny standard used for gender-based cases."
-                    },
-                    {
-                        "label": "B",
-                        "text": "The law is the least restrictive means to achieve a compelling governmental interest.",
-                        "isCorrect": true,
-                        "rationale": "Strict scrutiny requires a 'compelling' interest and narrow tailoring to ensure no non-discriminatory alternative exists."
-                    },
-                    {
-                        "label": "C",
-                        "text": "The law is rationally related to a legitimate government interest.",
-                        "isCorrect": false,
-                        "rationale": "This is the requirement for the rational basis test, which is less rigorous than strict scrutiny."
-                    },
-                    {
-                        "label": "D",
-                        "text": "The law was passed with a bipartisan majority in Congress.",
-                        "isCorrect": false,
-                        "rationale": "Legislative popularity does not satisfy the constitutional requirements of the strict scrutiny standard."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
                 "id": "Civ-2-4",
                 "question": "Which clause of the Fourteenth Amendment was used by the Supreme Court in Brown v. Board of Education to strike down public school segregation?",
                 "options": [
@@ -3465,37 +3186,6 @@ export const govQuizData: GovQuizData = {
                 "correctAnswer": "B"
             },
             {
-                "id": "Civ-2-9",
-                "question": "The 1965 march from Selma to Montgomery was a pivotal moment that led directly to which piece of legislation?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "The Civil Rights Act of 1964",
-                        "isCorrect": false,
-                        "rationale": "The Civil Rights Act was passed the year before the Selma march took place."
-                    },
-                    {
-                        "label": "B",
-                        "text": "The Voting Rights Act of 1965",
-                        "isCorrect": true,
-                        "rationale": "The violence of 'Bloody Sunday' galvanized federal support to ban literacy tests and oversee elections."
-                    },
-                    {
-                        "label": "C",
-                        "text": "The Nineteenth Amendment",
-                        "isCorrect": false,
-                        "rationale": "The Nineteenth Amendment, granting women's suffrage, was ratified in 1920."
-                    },
-                    {
-                        "label": "D",
-                        "text": "The Fair Housing Act",
-                        "isCorrect": false,
-                        "rationale": "While related, the Selma march focused specifically on voting access."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
                 "id": "Civ-2-10",
                 "question": "What is the difference between de jure segregation and de facto segregation?",
                 "options": [
@@ -3522,68 +3212,6 @@ export const govQuizData: GovQuizData = {
                         "text": "De jure was made legal by Brown v. Board, while de facto was banned.",
                         "isCorrect": false,
                         "rationale": "Brown v. Board banned de jure segregation in public schools."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
-                "id": "Civ-2-11",
-                "question": "The Supreme Court case of Regents of the University of California v. Bakke (1978) established what rule regarding affirmative action?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "Colleges could use racial quotas to ensure diversity.",
-                        "isCorrect": false,
-                        "rationale": "The Court specifically banned the use of quotas while allowing race to be one of many factors."
-                    },
-                    {
-                        "label": "B",
-                        "text": "Race could be considered as one of several factors in admissions, but specific racial quotas were unconstitutional.",
-                        "isCorrect": true,
-                        "rationale": "This established the 'plus factor' approach while rejecting reserved seats."
-                    },
-                    {
-                        "label": "C",
-                        "text": "Affirmative action was declared entirely unconstitutional in all forms.",
-                        "isCorrect": false,
-                        "rationale": "The Bakke decision actually upheld the principle of affirmative action for the goal of diversity."
-                    },
-                    {
-                        "label": "D",
-                        "text": "Only the federal government, not state universities, could use affirmative action.",
-                        "isCorrect": false,
-                        "rationale": "The ruling applied to state-funded institutions like the University of California."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
-                "id": "Civ-2-12",
-                "question": "What did the Supreme Court decide in the 2023 Students for Fair Admissions v. Harvard case?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "It reaffirmed that diversity is a compelling interest that justifies race-based admissions.",
-                        "isCorrect": false,
-                        "rationale": "This was the previous standard, which the 2023 decision moved away from."
-                    },
-                    {
-                        "label": "B",
-                        "text": "It ruled that race-conscious admission programs at Harvard and UNC were unconstitutional under the Equal Protection Clause.",
-                        "isCorrect": true,
-                        "rationale": "The Court found that these programs did not meet the strict scrutiny requirements and lacked measurable objectives."
-                    },
-                    {
-                        "label": "C",
-                        "text": "It mandated that all universities must implement quotas to ensure fairness.",
-                        "isCorrect": false,
-                        "rationale": "Quotas remained unconstitutional, and the ruling further restricted race-based policies."
-                    },
-                    {
-                        "label": "D",
-                        "text": "It allowed race to be used, but only for students who grew up in poverty.",
-                        "isCorrect": false,
-                        "rationale": "The ruling applied broadly to race-based admissions."
                     }
                 ],
                 "correctAnswer": "B"
@@ -3682,37 +3310,6 @@ export const govQuizData: GovQuizData = {
                 "correctAnswer": "B"
             },
             {
-                "id": "Civ-2-16",
-                "question": "How did the National Woman's Party (NWP) tactics differ from the National American Woman Suffrage Association (NAWSA)?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "The NWP used petitions, while NAWSA used hunger strikes.",
-                        "isCorrect": false,
-                        "rationale": "It was actually the NWP that used more confrontational tactics like hunger strikes."
-                    },
-                    {
-                        "label": "B",
-                        "text": "The NWP used confrontational tactics like picketing the White House, while NAWSA focused on lobbying and state-by-state campaigns.",
-                        "isCorrect": true,
-                        "rationale": "Under Alice Paul, the NWP was more radical, while NAWSA, led by Carrie Chapman Catt, was more traditional."
-                    },
-                    {
-                        "label": "C",
-                        "text": "NAWSA wanted a federal amendment, while the NWP wanted to ban voting entirely.",
-                        "isCorrect": false,
-                        "rationale": "Both groups wanted women to have the right to vote, but disagreed on the best methods."
-                    },
-                    {
-                        "label": "D",
-                        "text": "NAWSA was male-only, while the NWP was female-only.",
-                        "isCorrect": false,
-                        "rationale": "Both organizations were led by women and focused on women's rights."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
                 "id": "Civ-2-17",
                 "question": "The Nineteenth Amendment, ratified in 1920, guarantees what right?",
                 "options": [
@@ -3739,99 +3336,6 @@ export const govQuizData: GovQuizData = {
                         "text": "The right to hold any political office.",
                         "isCorrect": false,
                         "rationale": "While it allowed women to vote, the amendment focuses explicitly on the act of voting."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
-                "id": "Civ-2-18",
-                "question": "What is the primary function of Title IX of the Education Amendments of 1972?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "It requires all schools to provide childcare for students.",
-                        "isCorrect": false,
-                        "rationale": "Title IX does not mandate childcare, but rather prohibits discrimination based on sex."
-                    },
-                    {
-                        "label": "B",
-                        "text": "It prohibits discrimination on the basis of sex in any educational program receiving federal financial assistance.",
-                        "isCorrect": true,
-                        "rationale": "This applies to everything from sports to admissions and dormitory space in federally funded schools."
-                    },
-                    {
-                        "label": "C",
-                        "text": "It grants women the right to serve in combat roles in the military.",
-                        "isCorrect": false,
-                        "rationale": "This change came through military policy, not Title IX."
-                    },
-                    {
-                        "label": "D",
-                        "text": "It guarantees that women and men will be paid the same salary in private corporations.",
-                        "isCorrect": false,
-                        "rationale": "Title IX is limited to educational institutions that receive federal aid."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
-                "id": "Civ-2-19",
-                "question": "Which of the following describes 'comparable worth'?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "The idea that men should be paid more because they are the 'breadwinners'.",
-                        "isCorrect": false,
-                        "rationale": "This is a discriminatory stereotype that comparable worth seeks to eliminate."
-                    },
-                    {
-                        "label": "B",
-                        "text": "The doctrine that people should receive equal pay for jobs requiring the same level of skill, education, or responsibility.",
-                        "isCorrect": true,
-                        "rationale": "This aims to close the wage gap by valuing 'traditionally female' jobs fairly."
-                    },
-                    {
-                        "label": "C",
-                        "text": "The legal standard that allows companies to pay different wages based on seniority.",
-                        "isCorrect": false,
-                        "rationale": "While seniority can affect pay, it is not the definition of comparable worth."
-                    },
-                    {
-                        "label": "D",
-                        "text": "A standard used to measure the GDP of a nation compared to its neighbors.",
-                        "isCorrect": false,
-                        "rationale": "This term refers to labor economics and gender equity."
-                    }
-                ],
-                "correctAnswer": "B"
-            },
-            {
-                "id": "Civ-2-20",
-                "question": "Why did the Equal Rights Amendment (ERA) fail to become part of the Constitution?",
-                "options": [
-                    {
-                        "label": "A",
-                        "text": "The Supreme Court declared it unconstitutional.",
-                        "isCorrect": false,
-                        "rationale": "The Supreme Court cannot declare a proposed amendment unconstitutional; the issue was lack of ratification."
-                    },
-                    {
-                        "label": "B",
-                        "text": "It failed to be ratified by the required thirty-eight states before the deadline.",
-                        "isCorrect": true,
-                        "rationale": "Although passed by Congress in 1972, it fell three states short of the three-fourths majority needed."
-                    },
-                    {
-                        "label": "C",
-                        "text": "The President vetoed the amendment.",
-                        "isCorrect": false,
-                        "rationale": "The President does not have the power to veto constitutional amendments passed by Congress."
-                    },
-                    {
-                        "label": "D",
-                        "text": "Women's groups protested against it because they feared losing special protections.",
-                        "isCorrect": false,
-                        "rationale": "While some women opposed it, the primary reason was the legal failure to reach the threshold."
                     }
                 ],
                 "correctAnswer": "B"
