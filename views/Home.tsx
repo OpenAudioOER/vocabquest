@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, ArrowRight } from 'lucide-react';
+import { BookOpen, ArrowRight, Landmark } from 'lucide-react';
 
 export const Home: React.FC = () => {
     return (
@@ -53,15 +53,33 @@ export const Home: React.FC = () => {
                     {/* Card: Gov Quiz */}
                     <Link
                         to="/govquiz"
-                        className="group bg-soft-yellow rounded-3xl border-2 border-bright-yellow/30 p-8 shadow-glow-yellow bento-card-playful flex flex-col h-80 justify-center items-center text-center cursor-pointer"
+                        className="group relative bg-soft-yellow rounded-3xl border-2 border-bright-yellow/30 p-8 shadow-glow-yellow bento-card-playful bento-card-wide cursor-pointer overflow-hidden"
                     >
-                        <div className="w-16 h-16 rounded-2xl bg-bright-yellow text-slate-900 flex items-center justify-center mb-6 shadow-md group-hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined text-[32px]">account_balance</span>
+                        <div className="relative z-10 h-full flex flex-col justify-between">
+                            <div>
+                                <div className="w-16 h-16 rounded-2xl bg-bright-yellow text-slate-900 flex items-center justify-center mb-8 shadow-lg">
+                                    <Landmark size={32} />
+                                </div>
+                                <h3 className="text-3xl font-bold text-slate-900 mb-4">Gov Quiz</h3>
+                                <p className="text-slate-800 font-medium text-lg leading-relaxed max-w-xl">
+                                    College-level practice for American Government. Master the concepts for your exam.
+                                </p>
+                            </div>
+
+                            <div className="flex items-center justify-between mt-8">
+                                <span className="px-4 py-1.5 rounded-full text-sm font-bold bg-bright-yellow text-slate-900 shadow-sm">
+                                    College App
+                                </span>
+                                <div className="w-12 h-12 rounded-full bg-white text-slate-900 flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                                    <ArrowRight size={24} />
+                                </div>
+                            </div>
                         </div>
-                        <h3 className="text-2xl font-bold text-slate-900 mb-3">Gov Quiz</h3>
-                        <p className="text-slate-700 font-medium leading-relaxed">
-                            College-level practice for American Government. Master the concepts for your exam.
-                        </p>
+
+                        {/* Background Decoration */}
+                        <div className="absolute top-0 right-0 p-12 opacity-5 pointer-events-none group-hover:opacity-10 transition-opacity">
+                            <Landmark size={180} className="text-amber-600" />
+                        </div>
                     </Link>
 
                     {/* Placeholder: Community */}
