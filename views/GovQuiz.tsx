@@ -22,8 +22,30 @@ export const GovQuiz: React.FC = () => {
         if (!topic || !level) return;
         const topicData = govQuizData[topic]?.[level] || [];
         // Randomly select 15 questions
-        const shuffled = [...topicData].sort(() => 0.5 - Math.random()).slice(0, 15);
-        setQuestions(shuffled);
+        const shuffledQuestions = [...topicData].sort(() => 0.5 - Math.random()).slice(0, 15);
+        
+        // Randomize the options for each question
+        const randomizedQuestions = shuffledQuestions.map(q => {
+            const shuffledOptions = [...q.options].sort(() => 0.5 - Math.random());
+            const labels = ['A', 'B', 'C', 'D'];
+            let newCorrectAnswer = q.correctAnswer;
+            
+            const newOptions = shuffledOptions.map((opt, index) => {
+                const newLabel = labels[index] || opt.label;
+                if (opt.isCorrect) {
+                    newCorrectAnswer = newLabel;
+                }
+                return { ...opt, label: newLabel };
+            });
+            
+            return {
+                ...q,
+                options: newOptions,
+                correctAnswer: newCorrectAnswer
+            };
+        });
+
+        setQuestions(randomizedQuestions);
         setCurrentIndex(0);
         setSelectedOption(null);
         setScore(0);
