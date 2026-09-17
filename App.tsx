@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Home } from './views/Home';
 import { VocabQuest } from './views/VocabQuest';
 import { GovQuiz } from './views/GovQuiz';
+import { StatesExplorer } from './views/StatesExplorer';
+import { SpellingSparkle } from './views/SpellingSparkle';
 import { Navbar } from './components/layout/Navbar';
 
 const App: React.FC = () => {
@@ -15,6 +17,8 @@ const App: React.FC = () => {
             <Route path="/" element={<Home />} />
             <Route path="/vocabquest" element={<VocabQuest />} />
             <Route path="/govquiz" element={<GovQuiz />} />
+            <Route path="/states" element={<StatesExplorer />} />
+            <Route path="/spelling" element={<SpellingSparkle />} />
           </Routes>
         </main>
       </div>
