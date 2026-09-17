@@ -336,7 +336,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                   <div key={wordIdx} className="flex flex-wrap items-center justify-center gap-2">
                     {word.split("").map((targetChar, charOffset) => {
                       const overallIdx = wordStartIndex + charOffset;
-                      let boxBorder = "border-2 border-brand-purple/40 bg-purple-50 text-purple-900";
+                      let boxBorder = "border-2 border-brand-purple/40 bg-purple-50 text-slate-900 font-bold";
                       if (isCompleted) {
                         const userChar = (spellingInputs[overallIdx] || "").toLowerCase();
                         const correctChar = targetChar.toLowerCase();
@@ -359,6 +359,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                           onChange={(e) => handleSpellingChange(overallIdx, e.target.value)}
                           onKeyDown={(e) => handleSpellingKeyDown(overallIdx, e)}
                           disabled={isCompleted}
+                          style={{ color: isCompleted ? undefined : '#0f172a' }}
                           className={`w-10 h-12 md:w-11 md:h-13 rounded-2xl text-xl md:text-2xl font-black text-center shadow-md focus:outline-none focus:ring-4 focus:ring-brand-purple/30 uppercase transition-all ${boxBorder}`}
                         />
                       );
@@ -395,7 +396,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                   <div key={wordIdx} className="flex flex-wrap items-center justify-center gap-2">
                     {word.split("").map((targetChar, charOffset) => {
                       const overallIdx = wordStartIndex + charOffset;
-                      let boxBorder = "border-2 border-brand-pink/40 bg-pink-50 text-pink-900";
+                      let boxBorder = "border-2 border-brand-pink/40 bg-pink-50 text-slate-900 font-bold";
                       if (isCompleted) {
                         const userChar = (spellingInputs[overallIdx] || "").toLowerCase();
                         const correctChar = targetChar.toLowerCase();
@@ -418,6 +419,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                           onChange={(e) => handleSpellingChange(overallIdx, e.target.value)}
                           onKeyDown={(e) => handleSpellingKeyDown(overallIdx, e)}
                           disabled={isCompleted}
+                          style={{ color: isCompleted ? undefined : '#0f172a' }}
                           className={`w-10 h-12 md:w-12 md:h-14 rounded-2xl text-xl md:text-2xl font-black text-center shadow-md focus:outline-none focus:ring-4 focus:ring-brand-pink/30 uppercase transition-all ${boxBorder}`}
                         />
                       );
