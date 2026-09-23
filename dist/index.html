@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OER Tools</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+    rel="stylesheet" />
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#164ea5",
+            "primary-light": "#87b3f8",
+            "soft-yellow": "#fde293",
+            "bright-yellow": "#fed664",
+            "mint-green": "#cee9d8",
+            "sage-green": "#83c997",
+            "background-light": "#fdfdfd",
+            "surface-light": "#ffffff",
+            "brand-blue": "#3B82F6",
+            "brand-purple": "#8B5CF6",
+            "brand-pink": "#EC4899",
+            "brand-yellow": "#F59E0B",
+            "brand-green": "#10B981",
+            "brand-sky": "#0EA5E9",
+            brand: {
+              blue: "#3B82F6",
+              purple: "#8B5CF6",
+              pink: "#EC4899",
+              yellow: "#F59E0B",
+              green: "#10B981",
+              sky: "#0EA5E9",
+            }
+          },
+          fontFamily: {
+            "display": ["Lexend", "sans-serif"]
+          },
+          borderRadius: {
+            "3xl": "1.5rem",
+            "full": "9999px"
+          },
+          boxShadow: {
+            "playful": "0 10px 25px -5px rgba(0, 0, 0, 0.05)",
+            "glow-blue": "0 10px 20px -5px rgba(22, 78, 165, 0.2)",
+            "glow-yellow": "0 10px 20px -5px rgba(254, 214, 100, 0.3)",
+            "glow-green": "0 10px 20px -5px rgba(131, 201, 151, 0.3)",
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    input[type="text"], input {
+      color: #0f172a !important;
+    }
+
+    body {
+      font-family: 'Lexend', sans-serif;
+      background-image: radial-gradient(#164ea510 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      grid-auto-flow: dense;
+    }
+
+    .bento-card-wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 768px) {
+      .bento-card-wide {
+        grid-column: span 1;
+      }
+    }
+
+    .bento-card-playful {
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease;
+    }
+
+    .bento-card-playful:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .animate-bounce-short {
+      animation: bounce-short 0.5s infinite;
+    }
+
+    @keyframes bounce-short {
+
+      0%,
+      100% {
+        transform: translateY(-5%);
+      }
+
+      50% {
+        transform: translateY(0);
+      }
+    }
+
+    .animate-shake {
+      animation: shake 0.4s cubic-bezier(.36, .07, .19, .97) both;
+    }
+
+    @keyframes shake {
+
+      10%,
+      90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+
+      20%,
+      80% {
+        transform: translate3d(2px, 0, 0);
+      }
+
+      30%,
+      50%,
+      70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+
+      40%,
+      60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    }
+  </style>
+
+  <link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "@google/genai": "https://esm.sh/@google/genai@^1.40.0",
+    "react": "https://esm.sh/react@^19.2.4",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "canvas-confetti": "https://esm.sh/canvas-confetti@^1.9.4"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-B7ay2RD2.js"></script>
+</head>
+
+<body class="bg-background-light text-slate-900 selection:bg-primary/20">
+  <div id="root"></div>
+</body>
+
+</html>

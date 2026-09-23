@@ -5,20 +5,20 @@ export interface WordItem {
 }
 
 export const INITIAL_WORD_LIST: WordItem[] = [
-  { id: "snack", word: "snack", sentence: "I brought a healthy apple snack to school." },
-  { id: "prize", word: "prize", sentence: "She won a blue ribbon as a prize." },
-  { id: "trip", word: "trip", sentence: "We took a fun family trip to the beach." },
-  { id: "glow", word: "glow", sentence: "The night light gives off a soft glow." },
-  { id: "plant", word: "plant", sentence: "We will plant a flower in the garden." },
-  { id: "break", word: "break", sentence: "Be careful not to break the glass." },
-  { id: "spray", word: "spray", sentence: "Use water to spray the thirsty plant." },
-  { id: "splash", word: "splash", sentence: "The duck made a big splash in the water." },
-  { id: "straw", word: "straw", sentence: "I drank my juice using a paper straw." },
-  { id: "clapped", word: "clapped", sentence: "Everyone clapped when the show ended." },
-  { id: "dropped", word: "dropped", sentence: "He accidentally dropped his pencil on the floor." },
-  { id: "grinning", word: "grinning", sentence: "She was grinning because she was so happy." },
-  { id: "still", word: "still", sentence: "Please sit still while I take the photo." },
-  { id: "spell", word: "spell", sentence: "Can you spell your full name for me?" },
-  { id: "ask", word: "ask", sentence: "If you need help, remember to ask." },
-  { id: "just", word: "just", sentence: "I just finished reading my favorite book." }
+  { id: "face", word: "face", sentence: "She washed her face with warm water before bed." },
+  { id: "lake", word: "lake", sentence: "We saw little ducks swimming across the calm lake." },
+  { id: "ride", word: "ride", sentence: "Can we go for a wagon ride around the park?" },
+  { id: "time", word: "time", sentence: "It is time to put away your crayons and wash your hands." },
+  { id: "bike", word: "bike", sentence: "He wore his helmet while riding his new bike down the sidewalk." },
+  { id: "date", word: "date", sentence: "Write today's date at the very top of your paper." },
+  { id: "grade", word: "grade", sentence: "My sister is excited to be in the second grade this year." },
+  { id: "why", word: "why", sentence: "Why did the puppy bark at the funny squirrel?" },
+  { id: "sunny", word: "sunny", sentence: "It was a bright, sunny afternoon to play outside." },
+  { id: "july", word: "july", sentence: "We watch colorful fireworks in the sky during the month of July." },
+  { id: "fine", word: "fine", sentence: "I scraped my knee, but I am doing fine now." },
+  { id: "party", word: "party", sentence: "Everyone ate cake and played games at the birthday party." },
+  { id: "place", word: "place", sentence: "The library is a quiet place to read good books." },
+  { id: "page", word: "page", sentence: "Please turn to the next page of your reading book." },
+  { id: "try", word: "try", sentence: "Always try your best, even when the puzzle is hard." },
+  { id: "kind", word: "kind", sentence: "It is nice to be kind and share your toys with friends." }
 ];
