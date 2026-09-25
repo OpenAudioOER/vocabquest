@@ -204,8 +204,8 @@ export const SpellingBee: React.FC<SpellingBeeProps> = ({ dataset, onSuccess, on
             <span>Need a Hint?</span>
           </button>
         ) : (
-          <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded-2xl text-xs md:text-sm font-medium animate-fadeIn">
-            💡 <strong>Hint:</strong> Region: <strong>{currentState.region}</strong> | Capital: <strong>{currentState.capital}</strong> | Starts with letter <strong>&quot;{currentState.name[0]}&quot;</strong>.
+          <div className="bg-yellow-50 border border-yellow-200 text-yellow-900 p-3 rounded-2xl text-xs md:text-sm font-medium animate-fadeIn">
+            💡 <strong>Spelling Clue:</strong> Region: <strong>{currentState.region}</strong> &bull; Capital: <strong>{currentState.capital}</strong>!
           </div>
         )}
       </div>
@@ -243,8 +243,8 @@ export const SpellingBee: React.FC<SpellingBeeProps> = ({ dataset, onSuccess, on
                       onChange={(e) => handleInputChange(overallIdx, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(overallIdx, e)}
                       disabled={isCompleted}
-                      style={{ color: isCompleted ? undefined : '#0f172a' }}
-                      className={`w-10 h-12 md:w-12 md:h-14 rounded-2xl text-xl md:text-2xl font-black text-center shadow-md focus:outline-none focus:ring-4 focus:ring-brand-purple/30 uppercase transition-all ${boxBorder}`}
+                      style={{ color: isCompleted ? undefined : '#0f172a', padding: 0, lineHeight: 1 }}
+                      className={`w-7 h-9 sm:w-9 sm:h-11 md:w-11 md:h-13 rounded-xl text-base sm:text-lg md:text-xl font-extrabold text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/40 uppercase transition-all p-0 m-0 box-border leading-none ${boxBorder}`}
                     />
                   );
                 })}

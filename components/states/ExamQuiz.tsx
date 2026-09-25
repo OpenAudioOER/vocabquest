@@ -7,7 +7,7 @@ import { shuffleArray } from "../../utils/states/shuffle";
 import { RefreshCw, CheckCircle2, XCircle, ArrowRight, Volume2, Sparkles, MapPin, SpellCheck, Trophy } from "lucide-react";
 import confetti from "canvas-confetti";
 
-type QuestionType = "mc" | "spelling_map" | "spelling_audio";
+type QuestionType = "mc" | "spelling_map" | "spelling_audio" | "master_speller";
 
 interface ExamQuizProps {
   dataset: StateInfo[];
@@ -28,11 +28,13 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
 
   // Spelling state
   const [spellingInputs, setSpellingInputs] = useState<string[]>([]);
+  const [blankInputVal, setBlankInputVal] = useState("");
   const [isCompleted, setIsCompleted] = useState(false);
   const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
   const [hasPlayedAudio, setHasPlayedAudio] = useState(false);
 
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
+  const masterInputRef = useRef<HTMLInputElement | null>(null);
 
   const handlePlayStateAudio = (name: string) => {
     setHasPlayedAudio(true);
@@ -58,9 +60,14 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
       setRoundNumber((prev) => prev + 1);
     }
 
-    // Pick random question type: 1. Map Multiple Choice, 2. Map Spelling, 3. Audio Spelling
-    const types: QuestionType[] = ["mc", "spelling_map", "spelling_audio"];
-    const randomType = types[Math.floor(Math.random() * types.length)];
+    // Question type selection: ~20% chance of Master Speller (Blank Box) challenge
+    let randomType: QuestionType;
+    if (Math.random() < 0.20) {
+      randomType = "master_speller";
+    } else {
+      const standardTypes: QuestionType[] = ["mc", "spelling_map", "spelling_audio"];
+      randomType = standardTypes[Math.floor(Math.random() * standardTypes.length)];
+    }
     setQuestionType(randomType);
 
     // Reset quiz state
@@ -68,6 +75,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
     setIsCompleted(false);
     setIsCorrect(null);
     setHasPlayedAudio(false);
+    setBlankInputVal("");
     setSpellingInputs(new Array(targetState.name.length).fill(""));
 
     // Prepare MC options
@@ -85,8 +93,12 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
       }, 300);
     }
 
-    // Auto focus first letter slot if spelling question
-    if (randomType !== "mc") {
+    // Auto focus appropriate input
+    if (randomType === "master_speller") {
+      setTimeout(() => {
+        masterInputRef.current?.focus();
+      }, 200);
+    } else if (randomType !== "mc") {
       setTimeout(() => {
         inputRefs.current[0]?.focus();
       }, 200);
@@ -177,6 +189,32 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
     }
   };
 
+  // Handle Master Speller Form Submission (Blank Box Challenge)
+  const handleMasterSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (isCompleted || !blankInputVal.trim()) return;
+
+    const userSpelling = blankInputVal.trim().toLowerCase();
+    const targetSpelling = currentState.name.trim().toLowerCase();
+    const correct = userSpelling === targetSpelling;
+
+    setIsCompleted(true);
+    setIsCorrect(correct);
+
+    if (correct) {
+      onSuccess();
+      playPositiveFeedbackAudio();
+      confetti({
+        particleCount: 110,
+        spread: 85,
+        origin: { y: 0.6 },
+      });
+    } else {
+      onFailure();
+      playNegativeFeedbackAudio();
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto bg-white rounded-3xl p-4 md:p-6 shadow-xl border-4 border-brand-purple/20 flex flex-col items-center">
       {/* Top Header & Question Type Badge */}
@@ -195,6 +233,11 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
           {questionType === "spelling_audio" && (
             <span className="text-xs md:text-sm font-extrabold uppercase tracking-wider bg-pink-100 text-brand-pink px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
               <Volume2 className="w-4 h-4" /> Type 3: Audio & Spelling
+            </span>
+          )}
+          {questionType === "master_speller" && (
+            <span className="text-xs md:text-sm font-extrabold uppercase tracking-wider bg-amber-100 text-amber-800 border border-amber-300 px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+              <Sparkles className="w-4 h-4 text-amber-600" /> Challenge: Master Speller
             </span>
           )}
 
@@ -359,8 +402,8 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                           onChange={(e) => handleSpellingChange(overallIdx, e.target.value)}
                           onKeyDown={(e) => handleSpellingKeyDown(overallIdx, e)}
                           disabled={isCompleted}
-                          style={{ color: isCompleted ? undefined : '#0f172a' }}
-                          className={`w-10 h-12 md:w-11 md:h-13 rounded-2xl text-xl md:text-2xl font-black text-center shadow-md focus:outline-none focus:ring-4 focus:ring-brand-purple/30 uppercase transition-all ${boxBorder}`}
+                          style={{ color: isCompleted ? undefined : '#0f172a', padding: 0, lineHeight: 1 }}
+                          className={`w-7 h-9 sm:w-9 sm:h-11 md:w-11 md:h-13 rounded-xl text-base sm:text-lg md:text-xl font-extrabold text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/40 uppercase transition-all p-0 m-0 box-border leading-none ${boxBorder}`}
                         />
                       );
                     })}
@@ -419,8 +462,8 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                           onChange={(e) => handleSpellingChange(overallIdx, e.target.value)}
                           onKeyDown={(e) => handleSpellingKeyDown(overallIdx, e)}
                           disabled={isCompleted}
-                          style={{ color: isCompleted ? undefined : '#0f172a' }}
-                          className={`w-10 h-12 md:w-12 md:h-14 rounded-2xl text-xl md:text-2xl font-black text-center shadow-md focus:outline-none focus:ring-4 focus:ring-brand-pink/30 uppercase transition-all ${boxBorder}`}
+                          style={{ color: isCompleted ? undefined : '#0f172a', padding: 0, lineHeight: 1 }}
+                          className={`w-7 h-9 sm:w-9 sm:h-11 md:w-11 md:h-13 rounded-xl text-base sm:text-lg md:text-xl font-extrabold text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-pink/40 uppercase transition-all p-0 m-0 box-border leading-none ${boxBorder}`}
                         />
                       );
                     })}
@@ -428,6 +471,57 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                 );
               })}
             </div>
+          </div>
+        )}
+
+        {/* TYPE 4: MASTER SPELLER (BLANK BOX CHALLENGE) */}
+        {questionType === "master_speller" && (
+          <div className="w-full flex flex-col items-center">
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-xs font-black uppercase px-2.5 py-0.5 rounded-full bg-amber-500 text-white shadow-sm">
+                ⭐ Challenge Mode
+              </span>
+            </div>
+            <h3 className="text-lg md:text-xl font-extrabold text-gray-800 text-center mb-1">
+              Type the full state name from memory!
+            </h3>
+            <p className="text-xs md:text-sm text-gray-500 mb-4 text-center">
+              No letter count clues. Look at the gold state on the map and spell it correctly.
+            </p>
+
+            <form onSubmit={handleMasterSubmit} className="w-full max-w-sm flex flex-col items-center gap-3">
+              <div className="relative w-full">
+                <input
+                  ref={masterInputRef}
+                  type="text"
+                  value={blankInputVal}
+                  onChange={(e) => setBlankInputVal(e.target.value)}
+                  disabled={isCompleted}
+                  placeholder="Type state name here..."
+                  autoComplete="off"
+                  autoCorrect="off"
+                  spellCheck="false"
+                  className={`w-full px-5 py-3.5 text-center text-lg md:text-xl font-black rounded-2xl border-2 transition-all shadow-md focus:outline-none focus:ring-4 ${
+                    isCompleted
+                      ? isCorrect
+                        ? "border-green-500 bg-green-50 text-green-900"
+                        : "border-red-500 bg-red-50 text-red-900 animate-shake"
+                      : "border-amber-400 bg-amber-50/50 text-slate-900 focus:border-amber-500 focus:ring-amber-200"
+                  }`}
+                />
+              </div>
+
+              {!isCompleted && (
+                <button
+                  type="submit"
+                  disabled={!blankInputVal.trim()}
+                  className="w-full bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 disabled:opacity-50 disabled:cursor-not-allowed text-white font-extrabold py-3 px-6 rounded-2xl shadow-lg transition transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2"
+                >
+                  <span>Submit Answer</span>
+                  <CheckCircle2 className="w-5 h-5" />
+                </button>
+              )}
+            </form>
           </div>
         )}
 

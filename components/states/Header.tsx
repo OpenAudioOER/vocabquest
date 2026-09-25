@@ -10,6 +10,7 @@ interface HeaderProps {
   setActiveUnit: (unit: "unit1" | "unit2" | "all") => void;
   score: number;
   streak: number;
+  longestStreak: number;
 }
 
 export const Header: React.FC<HeaderProps> = ({
@@ -19,6 +20,7 @@ export const Header: React.FC<HeaderProps> = ({
   setActiveUnit,
   score,
   streak,
+  longestStreak,
 }) => {
   return (
     <header className="w-full bg-gradient-to-r from-brand-blue via-brand-purple to-brand-pink p-3 md:p-4 shadow-xl text-white rounded-b-3xl mb-4">
@@ -73,15 +75,20 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Score & Streaks */}
-        <div className="flex items-center space-x-3 bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-white/30 shadow-inner">
-          <div className="flex items-center space-x-1">
-            <Trophy className="w-5 h-5 text-yellow-300" />
-            <span className="text-base font-bold">{score} pts</span>
+        <div className="flex items-center space-x-2.5 md:space-x-3 bg-white/20 backdrop-blur-md px-3.5 py-1.5 rounded-2xl border border-white/30 shadow-inner">
+          <div className="flex items-center space-x-1" title="Total Score">
+            <Trophy className="w-4 h-4 md:w-5 md:h-5 text-yellow-300" />
+            <span className="text-xs md:text-base font-bold whitespace-nowrap">{score} pts</span>
           </div>
-          <div className="h-5 w-px bg-white/30" />
-          <div className="flex items-center space-x-1">
-            <Star className="w-5 h-5 text-yellow-400 fill-yellow-400 animate-bounce" />
-            <span className="text-base font-bold">{streak} Streak!</span>
+          <div className="h-4 md:h-5 w-px bg-white/30" />
+          <div className="flex items-center space-x-1" title="Current Streak">
+            <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-400 fill-yellow-400 animate-bounce" />
+            <span className="text-xs md:text-base font-bold whitespace-nowrap">{streak} Streak</span>
+          </div>
+          <div className="h-4 md:h-5 w-px bg-white/30" />
+          <div className="flex items-center space-x-1 text-amber-200" title="Longest Streak Record (Saved)">
+            <Award className="w-4 h-4 md:w-5 md:h-5 text-amber-300" />
+            <span className="text-xs md:text-sm font-extrabold whitespace-nowrap">Best: {longestStreak}</span>
           </div>
         </div>
       </div>

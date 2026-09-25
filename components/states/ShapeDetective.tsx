@@ -105,8 +105,8 @@ export const ShapeDetective: React.FC<ShapeDetectiveProps> = ({ dataset, onSucce
             <span>Need a Hint?</span>
           </button>
         ) : (
-          <div className="bg-yellow-50 border border-yellow-200 text-yellow-800 p-3 rounded-2xl text-xs md:text-sm font-medium animate-fadeIn">
-            💡 <strong>Hint:</strong> Located in the <strong>{currentState.region}</strong> region! Starts with letter &quot;{currentState.name[0]}&quot;.
+          <div className="bg-yellow-50 border border-yellow-200 text-yellow-900 p-3 rounded-2xl text-xs md:text-sm font-medium animate-fadeIn">
+            💡 <strong>Detective Clue:</strong> Located in the <strong>{currentState.region}</strong> region &bull; State capital is <strong>{currentState.capital}</strong>!
           </div>
         )}
       </div>

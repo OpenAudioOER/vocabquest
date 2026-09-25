@@ -11,12 +11,35 @@ export const StatesExplorer: React.FC = () => {
   const [activeUnit, setActiveUnit] = useState<"unit1" | "unit2" | "all">("unit2");
   const [score, setScore] = useState<number>(0);
   const [streak, setStreak] = useState<number>(0);
+  const [longestStreak, setLongestStreak] = useState<number>(() => {
+    if (typeof window !== "undefined") {
+      try {
+        const saved = localStorage.getItem("states_explorer_longest_streak");
+        return saved ? parseInt(saved, 10) || 0 : 0;
+      } catch (e) {
+        return 0;
+      }
+    }
+    return 0;
+  });
 
   const activeDataset = activeUnit === "unit1" ? UNIT_1_STATES : activeUnit === "unit2" ? UNIT_2_STATES : ALL_50_STATES;
 
   const handleSuccess = () => {
     setScore((prev) => prev + 10);
-    setStreak((prev) => prev + 1);
+    setStreak((prev) => {
+      const nextStreak = prev + 1;
+      setLongestStreak((curBest) => {
+        if (nextStreak > curBest) {
+          try {
+            localStorage.setItem("states_explorer_longest_streak", nextStreak.toString());
+          } catch (e) {}
+          return nextStreak;
+        }
+        return curBest;
+      });
+      return nextStreak;
+    });
   };
 
   const handleFailure = () => {
@@ -33,6 +56,7 @@ export const StatesExplorer: React.FC = () => {
           setActiveUnit={setActiveUnit}
           score={score}
           streak={streak}
+          longestStreak={longestStreak}
         />
 
         <div className="px-4 py-2">
