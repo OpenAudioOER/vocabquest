@@ -277,9 +277,9 @@ export const MapTapQuiz: React.FC<MapTapQuizProps> = ({
             {/* Header info */}
             <div className="flex flex-col md:flex-row items-center justify-between gap-2 border-b border-slate-100 pb-3 mb-4">
               <div className="flex items-center space-x-2">
-                <span className="w-8 h-8 rounded-xl bg-yellow-100 text-yellow-800 flex items-center justify-center font-black text-sm">
-                  {selectedState.id}
-                </span>
+                <div className="w-9 h-9 rounded-xl bg-amber-100 text-amber-700 flex items-center justify-center shadow-xs">
+                  <MapPin className="w-5 h-5 text-amber-600" />
+                </div>
                 <div>
                   <h3 className="text-lg md:text-xl font-black text-slate-800">
                     {focus === "capitals"
