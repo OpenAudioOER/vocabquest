@@ -7,17 +7,21 @@ import { shuffleArray } from "../../utils/states/shuffle";
 import { RefreshCw, CheckCircle2, XCircle, ArrowRight, Volume2, Sparkles, MapPin, SpellCheck, Trophy } from "lucide-react";
 import confetti from "canvas-confetti";
 
+import { FocusType } from "../../data/states/scheduleData";
+
 type QuestionType = "mc" | "spelling_map" | "spelling_audio" | "master_speller";
 
 interface ExamQuizProps {
   dataset: StateInfo[];
+  focus?: FocusType;
   onSuccess: () => void;
   onFailure: () => void;
 }
 
-export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailure }) => {
+export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", onSuccess, onFailure }) => {
   const [currentState, setCurrentState] = useState<StateInfo>(dataset[0]);
   const [questionType, setQuestionType] = useState<QuestionType>("mc");
+  const [isCapitalMode, setIsCapitalMode] = useState<boolean>(false);
   const [options, setOptions] = useState<string[]>([]);
   const [selectedAnswer, setSelectedAnswer] = useState<string | null>(null);
   
@@ -60,9 +64,15 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
       setRoundNumber((prev) => prev + 1);
     }
 
-    // Question type selection: ~20% chance of Master Speller (Blank Box) challenge
+    // Determine if question should test state capital
+    const isCap = focus === "capitals" || (focus === "both" && Math.random() < 0.5);
+    setIsCapitalMode(isCap);
+
+    // Question type selection: if testing capital, use multiple choice with smart distractors
     let randomType: QuestionType;
-    if (Math.random() < 0.20) {
+    if (isCap) {
+      randomType = "mc";
+    } else if (Math.random() < 0.20) {
       randomType = "master_speller";
     } else {
       const standardTypes: QuestionType[] = ["mc", "spelling_map", "spelling_audio"];
@@ -79,12 +89,21 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
     setSpellingInputs(new Array(targetState.name.length).fill(""));
 
     // Prepare MC options
-    const wrongOptions = dataset.filter((s) => s.id !== targetState.id)
-      .sort(() => 0.5 - Math.random())
-      .slice(0, 3)
-      .map((s) => s.name);
-    const allOptions = shuffleArray([...wrongOptions, targetState.name]);
-    setOptions(allOptions);
+    if (isCap) {
+      const wrongOptions = dataset.filter((s) => s.id !== targetState.id)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map((s) => s.capital);
+      const allOptions = shuffleArray([...wrongOptions, targetState.capital]);
+      setOptions(allOptions);
+    } else {
+      const wrongOptions = dataset.filter((s) => s.id !== targetState.id)
+        .sort(() => 0.5 - Math.random())
+        .slice(0, 3)
+        .map((s) => s.name);
+      const allOptions = shuffleArray([...wrongOptions, targetState.name]);
+      setOptions(allOptions);
+    }
 
     // Auto-play audio if audio question
     if (randomType === "spelling_audio") {
@@ -108,7 +127,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
   useEffect(() => {
     stateDeckRef.current = [];
     loadNextQuestion();
-  }, [dataset]);
+  }, [dataset, focus]);
 
   // Handle Multiple Choice Selection
   const handleSelectMCOption = (option: string) => {
@@ -116,7 +135,9 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
     setSelectedAnswer(option);
     setIsCompleted(true);
 
-    if (option === currentState.name) {
+    const expectedAnswer = isCapitalMode ? currentState.capital : currentState.name;
+
+    if (option === expectedAnswer) {
       setIsCorrect(true);
       onSuccess();
       playPositiveFeedbackAudio(); // Play random positive MP3 response!
@@ -322,14 +343,17 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
         {questionType === "mc" && (
           <div className="w-full flex flex-col items-center">
             <h3 className="text-lg md:text-xl font-extrabold text-gray-800 text-center mb-3">
-              Which state is highlighted in yellow on the map?
+              {isCapitalMode
+                ? `What is the capital of ${currentState.name}?`
+                : "Which state is highlighted in yellow on the map?"}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full mb-4">
               {options.map((option, idx) => {
+                const expectedAnswer = isCapitalMode ? currentState.capital : currentState.name;
                 let btnStyle = "bg-gray-50 border-2 border-gray-200 text-gray-700 hover:border-brand-blue hover:bg-sky-50";
 
                 if (isCompleted) {
-                  if (option === currentState.name) {
+                  if (option === expectedAnswer) {
                     btnStyle = "bg-green-500 border-2 border-green-600 text-white font-bold scale-[1.02]";
                   } else if (option === selectedAnswer) {
                     btnStyle = "bg-red-500 border-2 border-red-600 text-white font-bold";
@@ -346,10 +370,10 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, onSuccess, onFailur
                     className={`p-4 rounded-2xl text-base md:text-lg font-bold transition-all duration-200 flex items-center justify-between ${btnStyle}`}
                   >
                     <span>{option}</span>
-                    {isCompleted && option === currentState.name && (
+                    {isCompleted && option === expectedAnswer && (
                       <CheckCircle2 className="w-6 h-6 text-white" />
                     )}
-                    {isCompleted && option === selectedAnswer && option !== currentState.name && (
+                    {isCompleted && option === selectedAnswer && option !== expectedAnswer && (
                       <XCircle className="w-6 h-6 text-white" />
                     )}
                   </button>
