@@ -68,10 +68,16 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
     const isCap = focus === "capitals" || (focus === "both" && Math.random() < 0.5);
     setIsCapitalMode(isCap);
 
-    // Question type selection: if testing capital, use multiple choice with smart distractors
+    const targetWord = isCap ? targetState.capital : targetState.name;
+
+    // Question type selection: if testing capital, allow MC, Map Spelling, and Master Speller
     let randomType: QuestionType;
     if (isCap) {
-      randomType = "mc";
+      if (Math.random() < 0.20) {
+        randomType = "master_speller";
+      } else {
+        randomType = Math.random() < 0.5 ? "mc" : "spelling_map";
+      }
     } else if (Math.random() < 0.20) {
       randomType = "master_speller";
     } else {
@@ -86,7 +92,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
     setIsCorrect(null);
     setHasPlayedAudio(false);
     setBlankInputVal("");
-    setSpellingInputs(new Array(targetState.name.length).fill(""));
+    setSpellingInputs(new Array(targetWord.length).fill(""));
 
     // Prepare MC options
     if (isCap) {
@@ -157,14 +163,15 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
   const handleSpellingChange = (index: number, val: string) => {
     if (isCompleted) return;
 
+    const targetWord = isCapitalMode ? currentState.capital : currentState.name;
     const upperVal = val.toUpperCase().slice(-1);
     const newInputs = [...spellingInputs];
     newInputs[index] = upperVal;
     setSpellingInputs(newInputs);
 
     // Auto-advance focus
-    if (upperVal !== "" && index < currentState.name.length - 1) {
-      if (currentState.name[index + 1] === " ") {
+    if (upperVal !== "" && index < targetWord.length - 1) {
+      if (targetWord[index + 1] === " ") {
         newInputs[index + 1] = " ";
         setSpellingInputs(newInputs);
         inputRefs.current[index + 2]?.focus();
@@ -175,12 +182,12 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
 
     // Check if user finished spelling
     const filledCount = newInputs.filter((char, idx) => {
-      return currentState.name[idx] === " " || char !== "";
+      return targetWord[idx] === " " || char !== "";
     }).length;
 
-    if (filledCount === currentState.name.length) {
+    if (filledCount === targetWord.length) {
       const userSpelling = newInputs.join("").trim().toLowerCase();
-      const targetSpelling = currentState.name.toLowerCase();
+      const targetSpelling = targetWord.trim().toLowerCase();
 
       setIsCompleted(true);
       if (userSpelling === targetSpelling) {
@@ -201,8 +208,9 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
   };
 
   const handleSpellingKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+    const targetWord = isCapitalMode ? currentState.capital : currentState.name;
     if (e.key === "Backspace" && spellingInputs[index] === "" && index > 0) {
-      if (currentState.name[index - 1] === " " && index - 2 >= 0) {
+      if (targetWord[index - 1] === " " && index - 2 >= 0) {
         inputRefs.current[index - 2]?.focus();
       } else {
         inputRefs.current[index - 1]?.focus();
@@ -215,8 +223,9 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
     e.preventDefault();
     if (isCompleted || !blankInputVal.trim()) return;
 
+    const targetWord = isCapitalMode ? currentState.capital : currentState.name;
     const userSpelling = blankInputVal.trim().toLowerCase();
-    const targetSpelling = currentState.name.trim().toLowerCase();
+    const targetSpelling = targetWord.trim().toLowerCase();
     const correct = userSpelling === targetSpelling;
 
     setIsCompleted(true);
@@ -243,12 +252,12 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
         <div className="flex flex-wrap items-center gap-2">
           {questionType === "mc" && (
             <span className="text-xs md:text-sm font-extrabold uppercase tracking-wider bg-blue-100 text-brand-blue px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-              <MapPin className="w-4 h-4" /> Type 1: Map Identification
+              <MapPin className="w-4 h-4" /> Type 1: {isCapitalMode ? "Capital Identification" : "Map Identification"}
             </span>
           )}
           {questionType === "spelling_map" && (
             <span className="text-xs md:text-sm font-extrabold uppercase tracking-wider bg-purple-100 text-brand-purple px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-              <SpellCheck className="w-4 h-4" /> Type 2: Map & Spelling
+              <SpellCheck className="w-4 h-4" /> Type 2: {isCapitalMode ? "Capital Spelling" : "Map & Spelling"}
             </span>
           )}
           {questionType === "spelling_audio" && (
@@ -257,8 +266,8 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
             </span>
           )}
           {questionType === "master_speller" && (
-            <span className="text-xs md:text-sm font-extrabold uppercase tracking-wider bg-amber-100 text-amber-800 border border-amber-300 px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
-              <Sparkles className="w-4 h-4 text-amber-600" /> Challenge: Master Speller
+            <span className="text-xs md:text-sm font-extrabold uppercase tracking-wider bg-amber-100 text-amber-900 border border-amber-300 px-3 py-1.5 rounded-full flex items-center gap-1.5 shadow-sm">
+              <Sparkles className="w-4 h-4 text-amber-600" /> Challenge: {isCapitalMode ? "Master Capital Speller" : "Master Speller"}
             </span>
           )}
 
@@ -384,59 +393,64 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
         )}
 
         {/* TYPE 2: MAP SPELLING */}
-        {questionType === "spelling_map" && (
-          <div className="w-full flex flex-col items-center">
-            <h3 className="text-lg md:text-xl font-extrabold text-gray-800 text-center mb-2">
-              Spell the name of the highlighted state!
-            </h3>
-            <p className="text-xs md:text-sm text-gray-500 mb-3">
-              ({currentState.name.length} letters)
-            </p>
+        {questionType === "spelling_map" && (() => {
+          const targetWord = isCapitalMode ? currentState.capital : currentState.name;
+          return (
+            <div className="w-full flex flex-col items-center">
+              <h3 className="text-lg md:text-xl font-extrabold text-gray-800 text-center mb-2">
+                {isCapitalMode
+                  ? `Spell the capital of ${currentState.name}!`
+                  : "Spell the name of the highlighted state!"}
+              </h3>
+              <p className="text-xs md:text-sm text-gray-500 mb-3">
+                ({targetWord.length} letters)
+              </p>
 
-            {/* Letter Slots Grouped by Word for Clean Multi-Line Formatting */}
-            <div className="flex flex-col items-center justify-center gap-3 max-w-full my-3">
-              {currentState.name.split(" ").map((word, wordIdx, wordsArr) => {
-                // Calculate starting character index for current word in overall state name string
-                const wordStartIndex = wordsArr.slice(0, wordIdx).join(" ").length + (wordIdx > 0 ? 1 : 0);
+              {/* Letter Slots Grouped by Word for Clean Multi-Line Formatting */}
+              <div className="flex flex-col items-center justify-center gap-3 max-w-full my-3">
+                {targetWord.split(" ").map((word, wordIdx, wordsArr) => {
+                  // Calculate starting character index for current word in overall target word string
+                  const wordStartIndex = wordsArr.slice(0, wordIdx).join(" ").length + (wordIdx > 0 ? 1 : 0);
 
-                return (
-                  <div key={wordIdx} className="flex flex-wrap items-center justify-center gap-2">
-                    {word.split("").map((targetChar, charOffset) => {
-                      const overallIdx = wordStartIndex + charOffset;
-                      let boxBorder = "border-2 border-brand-purple/40 bg-purple-50 text-slate-900 font-bold";
-                      if (isCompleted) {
-                        const userChar = (spellingInputs[overallIdx] || "").toLowerCase();
-                        const correctChar = targetChar.toLowerCase();
-                        if (userChar === correctChar) {
-                          boxBorder = "border-2 border-green-500 bg-green-100 text-green-900 font-bold scale-105";
-                        } else {
-                          boxBorder = "border-2 border-red-500 bg-red-100 text-red-900 font-bold animate-shake";
+                  return (
+                    <div key={wordIdx} className="flex flex-wrap items-center justify-center gap-2">
+                      {word.split("").map((targetChar, charOffset) => {
+                        const overallIdx = wordStartIndex + charOffset;
+                        let boxBorder = "border-2 border-brand-purple/40 bg-purple-50 text-slate-900 font-bold";
+                        if (isCompleted) {
+                          const userChar = (spellingInputs[overallIdx] || "").toLowerCase();
+                          const correctChar = targetChar.toLowerCase();
+                          if (userChar === correctChar) {
+                            boxBorder = "border-2 border-green-500 bg-green-100 text-green-900 font-bold scale-105";
+                          } else {
+                            boxBorder = "border-2 border-red-500 bg-red-100 text-red-900 font-bold animate-shake";
+                          }
                         }
-                      }
 
-                      return (
-                        <input
-                          key={overallIdx}
-                          ref={(el) => {
-                            inputRefs.current[overallIdx] = el;
-                          }}
-                          type="text"
-                          maxLength={1}
-                          value={spellingInputs[overallIdx] || ""}
-                          onChange={(e) => handleSpellingChange(overallIdx, e.target.value)}
-                          onKeyDown={(e) => handleSpellingKeyDown(overallIdx, e)}
-                          disabled={isCompleted}
-                          style={{ color: isCompleted ? undefined : '#0f172a', padding: 0, lineHeight: 1 }}
-                          className={`w-7 h-9 sm:w-9 sm:h-11 md:w-11 md:h-13 rounded-xl text-base sm:text-lg md:text-xl font-extrabold text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/40 uppercase transition-all p-0 m-0 box-border leading-none ${boxBorder}`}
-                        />
-                      );
-                    })}
-                  </div>
-                );
-              })}
+                        return (
+                          <input
+                            key={overallIdx}
+                            ref={(el) => {
+                              inputRefs.current[overallIdx] = el;
+                            }}
+                            type="text"
+                            maxLength={1}
+                            value={spellingInputs[overallIdx] || ""}
+                            onChange={(e) => handleSpellingChange(overallIdx, e.target.value)}
+                            onKeyDown={(e) => handleSpellingKeyDown(overallIdx, e)}
+                            disabled={isCompleted}
+                            style={{ color: isCompleted ? undefined : '#0f172a', padding: 0, lineHeight: 1 }}
+                            className={`w-7 h-9 sm:w-9 sm:h-11 md:w-11 md:h-13 rounded-xl text-base sm:text-lg md:text-xl font-extrabold text-center shadow-sm focus:outline-none focus:ring-2 focus:ring-brand-purple/40 uppercase transition-all p-0 m-0 box-border leading-none ${boxBorder}`}
+                          />
+                        );
+                      })}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        )}
+          );
+        })()}
 
         {/* TYPE 3: AUDIO SPELLING */}
         {questionType === "spelling_audio" && (
@@ -507,10 +521,14 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
               </span>
             </div>
             <h3 className="text-lg md:text-xl font-extrabold text-gray-800 text-center mb-1">
-              Type the full state name from memory!
+              {isCapitalMode
+                ? `Type the capital of ${currentState.name} from memory!`
+                : "Type the full state name from memory!"}
             </h3>
             <p className="text-xs md:text-sm text-gray-500 mb-4 text-center">
-              No letter count clues. Look at the gold state on the map and spell it correctly.
+              {isCapitalMode
+                ? `Look at ${currentState.name} on the map and spell its capital city.`
+                : "No letter count clues. Look at the gold state on the map and spell it correctly."}
             </p>
 
             <form onSubmit={handleMasterSubmit} className="w-full max-w-sm flex flex-col items-center gap-3">
@@ -521,7 +539,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
                   value={blankInputVal}
                   onChange={(e) => setBlankInputVal(e.target.value)}
                   disabled={isCompleted}
-                  placeholder="Type state name here..."
+                  placeholder={isCapitalMode ? "Type capital city here..." : "Type state name here..."}
                   autoComplete="off"
                   autoCorrect="off"
                   spellCheck="false"
@@ -556,7 +574,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
               <div className="text-center mb-3">
                 <span className="text-green-600 font-extrabold text-lg md:text-xl flex items-center justify-center gap-2">
                   <Sparkles className="w-6 h-6 text-yellow-400" />
-                  Awesome Job! Correct answer is {currentState.name}!
+                  Awesome Job! Correct answer is {isCapitalMode ? currentState.capital : currentState.name}!
                 </span>
                 <p className="text-xs md:text-sm text-gray-600 mt-1 italic">
                   &ldquo;{currentState.funFact}&rdquo;
@@ -565,7 +583,7 @@ export const ExamQuiz: React.FC<ExamQuizProps> = ({ dataset, focus = "states", o
             ) : (
               <div className="text-center mb-3">
                 <span className="text-red-500 font-extrabold text-lg md:text-xl">
-                  Nice try! The correct state is {currentState.name}.
+                  Nice try! The correct answer is {isCapitalMode ? `${currentState.capital} (capital of ${currentState.name})` : currentState.name}.
                 </span>
                 <p className="text-xs md:text-sm text-gray-600 mt-1">
                   Keep practicing, you&apos;ll get the next one!
