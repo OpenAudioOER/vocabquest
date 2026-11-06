@@ -3530,7 +3530,784 @@ export const govQuizData: GovQuizData = {
         ]
     },
     "The President & Public Opinion": {
-        "Level 1": [],
+        "Level 1": [
+          {
+                    "id": "Pres-1-1",
+                    "question": "In political science, the term 'public opinion' is best described as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The views and beliefs held by everyday citizens on government and policy issues.",
+                                        "isCorrect": true,
+                                        "rationale": "Public opinion is defined as the aggregate of individual attitudes or beliefs shared by some portion of the adult population regarding issues at a given moment."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "The official voting platform approved by delegates at a national party convention.",
+                                        "isCorrect": false,
+                                        "rationale": "Public opinion is defined as the aggregate of individual attitudes or beliefs shared by some portion of the adult population regarding issues at a given moment."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The unanimous agreement of all registered voters during an election cycle.",
+                                        "isCorrect": false,
+                                        "rationale": "Public opinion is defined as the aggregate of individual attitudes or beliefs shared by some portion of the adult population regarding issues at a given moment."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "The editorial opinions published by national television news organizations.",
+                                        "isCorrect": false,
+                                        "rationale": "Public opinion is defined as the aggregate of individual attitudes or beliefs shared by some portion of the adult population regarding issues at a given moment."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Look for the choice that captures what ordinary members of the public think, rather than formal declarations made by political parties or media organizations."
+          },
+          {
+                    "id": "Pres-1-2",
+                    "question": "When a vast majority of the public agrees on a specific political topic, political scientists call this:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Divided opinion.",
+                                        "isCorrect": false,
+                                        "rationale": "Consensus opinion refers to general agreement among the citizenry on a specific political issue."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Consensus opinion.",
+                                        "isCorrect": true,
+                                        "rationale": "Consensus opinion refers to general agreement among the citizenry on a specific political issue."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Selection bias.",
+                                        "isCorrect": false,
+                                        "rationale": "Consensus opinion refers to general agreement among the citizenry on a specific political issue."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Push polling.",
+                                        "isCorrect": false,
+                                        "rationale": "Consensus opinion refers to general agreement among the citizenry on a specific political issue."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Notice that the prompt describes overwhelming majority agreement across the public rather than a polarized electorate."
+          },
+          {
+                    "id": "Pres-1-3",
+                    "question": "When the public is split into two opposing camps with contrasting viewpoints, this situation is known as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Consensus opinion.",
+                                        "isCorrect": false,
+                                        "rationale": "Divided opinion occurs when public opinion is polarized between two quite different, competing positions."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Selection bias.",
+                                        "isCorrect": false,
+                                        "rationale": "Divided opinion occurs when public opinion is polarized between two quite different, competing positions."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Divided opinion.",
+                                        "isCorrect": true,
+                                        "rationale": "Divided opinion occurs when public opinion is polarized between two quite different, competing positions."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Non-response bias.",
+                                        "isCorrect": false,
+                                        "rationale": "Divided opinion occurs when public opinion is polarized between two quite different, competing positions."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "Consider how political scientists classify an issue environment when two roughly equal coalitions oppose each other."
+          },
+          {
+                    "id": "Pres-1-4",
+                    "question": "Which of the following is the defining feature of a straw poll?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "It questions an unrepresentative, non-random group of people.",
+                                        "isCorrect": true,
+                                        "rationale": "A straw poll is an informal, unofficial poll conducted with a non-random, unrepresentative sample of individuals."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "It is conducted exclusively by the federal election commission.",
+                                        "isCorrect": false,
+                                        "rationale": "A straw poll is an informal, unofficial poll conducted with a non-random, unrepresentative sample of individuals."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "It requires a certified list of registered primary voters.",
+                                        "isCorrect": false,
+                                        "rationale": "A straw poll is an informal, unofficial poll conducted with a non-random, unrepresentative sample of individuals."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "It always produces a statistical margin of error near zero.",
+                                        "isCorrect": false,
+                                        "rationale": "A straw poll is an informal, unofficial poll conducted with a non-random, unrepresentative sample of individuals."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Think about whether respondents in this format are selected through systematic statistical rules or simply chosen informally without random sampling."
+          },
+          {
+                    "id": "Pres-1-5",
+                    "question": "Why did the Literary Digest magazine predict the wrong winner in the 1936 presidential election?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The magazine polled fewer than one hundred people total.",
+                                        "isCorrect": false,
+                                        "rationale": "The Literary Digest drew its sample largely from telephone directories and automobile registration lists during the Great Depression, which heavily over-represented wealthier citizens who favored Alf Landon over Franklin D. Roosevelt."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "The survey sample was drawn heavily from wealthier households.",
+                                        "isCorrect": true,
+                                        "rationale": "The Literary Digest drew its sample largely from telephone directories and automobile registration lists during the Great Depression, which heavily over-represented wealthier citizens who favored Alf Landon over Franklin D. Roosevelt."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The poll was conducted after the president was inaugurated.",
+                                        "isCorrect": false,
+                                        "rationale": "The Literary Digest drew its sample largely from telephone directories and automobile registration lists during the Great Depression, which heavily over-represented wealthier citizens who favored Alf Landon over Franklin D. Roosevelt."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "The magazine only surveyed voters in European countries.",
+                                        "isCorrect": false,
+                                        "rationale": "The Literary Digest drew its sample largely from telephone directories and automobile registration lists during the Great Depression, which heavily over-represented wealthier citizens who favored Alf Landon over Franklin D. Roosevelt."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Consider which socioeconomic groups were able to afford luxury items and private services during the Great Depression."
+          },
+          {
+                    "id": "Pres-1-6",
+                    "question": "In scientific polling, what does it mean to draw a random sample?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Polling only volunteers who contact the survey office directly.",
+                                        "isCorrect": false,
+                                        "rationale": "A random sample requires that every individual in the targeted universe has a known, equal probability of being selected for participation."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Ensuring every person in the population has an equal chance of being picked.",
+                                        "isCorrect": true,
+                                        "rationale": "A random sample requires that every individual in the targeted universe has a known, equal probability of being selected for participation."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Allowing interviewers to choose whichever friends they want to survey.",
+                                        "isCorrect": false,
+                                        "rationale": "A random sample requires that every individual in the targeted universe has a known, equal probability of being selected for participation."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Asking people questions at random times in busy shopping malls.",
+                                        "isCorrect": false,
+                                        "rationale": "A random sample requires that every individual in the targeted universe has a known, equal probability of being selected for participation."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "In statistics, random does not mean haphazard or informal; consider how probability theory ensures fairness in how individuals are selected."
+          },
+          {
+                    "id": "Pres-1-7",
+                    "question": "When looking at survey results, what does the letter N represent?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The number of participants who were included in the survey.",
+                                        "isCorrect": true,
+                                        "rationale": "In statistical reports and survey methodology, N designates the total sample size or number of completed respondent records."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "The percentage of people who decided not to participate.",
+                                        "isCorrect": false,
+                                        "rationale": "In statistical reports and survey methodology, N designates the total sample size or number of completed respondent records."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The number of political candidates running in the election.",
+                                        "isCorrect": false,
+                                        "rationale": "In statistical reports and survey methodology, N designates the total sample size or number of completed respondent records."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "The national ranking of the organization hosting the poll.",
+                                        "isCorrect": false,
+                                        "rationale": "In statistical reports and survey methodology, N designates the total sample size or number of completed respondent records."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Recall standard scientific notation for sample size—this letter tells you the total count of completed responses."
+          },
+          {
+                    "id": "Pres-1-8",
+                    "question": "What does a survey's margin of error tell the reader?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The exact percentage of respondents who provided untruthful responses.",
+                                        "isCorrect": false,
+                                        "rationale": "The margin of error defines the statistical boundary or confidence interval within which the true population parameter is expected to fall."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "The expected range of statistical variation due to sampling error.",
+                                        "isCorrect": true,
+                                        "rationale": "The margin of error defines the statistical boundary or confidence interval within which the true population parameter is expected to fall."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The date when election authorities will certify the official results.",
+                                        "isCorrect": false,
+                                        "rationale": "The margin of error defines the statistical boundary or confidence interval within which the true population parameter is expected to fall."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "The amount of money spent to carry out telephone interviews.",
+                                        "isCorrect": false,
+                                        "rationale": "The margin of error defines the statistical boundary or confidence interval within which the true population parameter is expected to fall."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Remember that no sample perfectly mirrors an entire population; which metric accounts for that natural statistical window?"
+          },
+          {
+                    "id": "Pres-1-9",
+                    "question": "If public support changes simply because a question changes its phrasing from 'drilling for oil' to 'energy exploration,' this is known as a:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Selection bias.",
+                                        "isCorrect": false,
+                                        "rationale": "Framing effects describe how the presentation, word choice, or rhetorical lens of a question systematically alters the opinions expressed by respondents."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Framing effect.",
+                                        "isCorrect": true,
+                                        "rationale": "Framing effects describe how the presentation, word choice, or rhetorical lens of a question systematically alters the opinions expressed by respondents."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Random sample.",
+                                        "isCorrect": false,
+                                        "rationale": "Framing effects describe how the presentation, word choice, or rhetorical lens of a question systematically alters the opinions expressed by respondents."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Straw survey.",
+                                        "isCorrect": false,
+                                        "rationale": "Framing effects describe how the presentation, word choice, or rhetorical lens of a question systematically alters the opinions expressed by respondents."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Look at whether the factual policy changes, or whether only the vocabulary and emotional associations change."
+          },
+          {
+                    "id": "Pres-1-10",
+                    "question": "What term describes the process through which individuals develop their political beliefs, values, and loyalties?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Political socialization.",
+                                        "isCorrect": true,
+                                        "rationale": "Political socialization is the lifelong learning process by which individuals acquire their political orientations, party leanings, and cultural beliefs."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Ticket balancing.",
+                                        "isCorrect": false,
+                                        "rationale": "Political socialization is the lifelong learning process by which individuals acquire their political orientations, party leanings, and cultural beliefs."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Judicial review.",
+                                        "isCorrect": false,
+                                        "rationale": "Political socialization is the lifelong learning process by which individuals acquire their political orientations, party leanings, and cultural beliefs."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Executive privilege.",
+                                        "isCorrect": false,
+                                        "rationale": "Political socialization is the lifelong learning process by which individuals acquire their political orientations, party leanings, and cultural beliefs."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Recall the sociological term for how individuals absorb cultural norms, civic values, and group allegiances as they grow up."
+          },
+          {
+                    "id": "Pres-1-11",
+                    "question": "Which of the following is true regarding a push poll?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "It is an objective study conducted by university political scientists.",
+                                        "isCorrect": false,
+                                        "rationale": "Push polls are disguised political campaign operations that feed respondents leading or negative information under the pretext of conducting public opinion research."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "It is a campaign call intended to influence voters with loaded claims.",
+                                        "isCorrect": true,
+                                        "rationale": "Push polls are disguised political campaign operations that feed respondents leading or negative information under the pretext of conducting public opinion research."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "It is a random in-person survey conducted as voters exit polling places.",
+                                        "isCorrect": false,
+                                        "rationale": "Push polls are disguised political campaign operations that feed respondents leading or negative information under the pretext of conducting public opinion research."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "It is an official ballot mailed to all registered citizens by the state.",
+                                        "isCorrect": false,
+                                        "rationale": "Push polls are disguised political campaign operations that feed respondents leading or negative information under the pretext of conducting public opinion research."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Distinguish between genuine academic research and telemarketing calls designed to sway voter sentiment under false pretenses."
+          },
+          {
+                    "id": "Pres-1-12",
+                    "question": "True or False: In public opinion polling, increasing the sample size generally makes the margin of error smaller.",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "True",
+                                        "isCorrect": true,
+                                        "rationale": "Larger sample sizes reduce sampling error, leading to tighter confidence intervals and a smaller margin of error."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "False",
+                                        "isCorrect": false,
+                                        "rationale": "Larger sample sizes reduce sampling error, leading to tighter confidence intervals and a smaller margin of error."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Consider whether gathering more data points reduces or increases statistical uncertainty about a population."
+          },
+          {
+                    "id": "Pres-1-13",
+                    "question": "True or False: A president’s approval rating typically starts relatively high during the initial honeymoon period and drops over time.",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "True",
+                                        "isCorrect": true,
+                                        "rationale": "Presidents typically experience an initial honeymoon period of broad public support, which gradually declines as governing controversies and partisan polarization set in."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "False",
+                                        "isCorrect": false,
+                                        "rationale": "Presidents typically experience an initial honeymoon period of broad public support, which gradually declines as governing controversies and partisan polarization set in."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Review historical polling trends tracking executive approval from inauguration day across the four-year term."
+          },
+          {
+                    "id": "Pres-1-14",
+                    "question": "Under the U.S. Constitution, what is the minimum age a person must reach to serve as President?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "25 years old.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 1 establishes that no person shall be eligible to the Office of President who has not attained to the age of thirty-five years."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "30 years old.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 1 establishes that no person shall be eligible to the Office of President who has not attained to the age of thirty-five years."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "35 years old.",
+                                        "isCorrect": true,
+                                        "rationale": "Article II, Section 1 establishes that no person shall be eligible to the Office of President who has not attained to the age of thirty-five years."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "40 years old.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 1 establishes that no person shall be eligible to the Office of President who has not attained to the age of thirty-five years."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "Recall that the Constitution establishes progressively higher age minimums as you move from the House (25) to the Senate (30) to the executive."
+          },
+          {
+                    "id": "Pres-1-15",
+                    "question": "When the President gives operational orders to military commanders regarding troop deployments overseas, they are acting as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Chief Legislator.",
+                                        "isCorrect": false,
+                                        "rationale": "As Commander in Chief under Article II, Section 2, the president exercises civilian command authority over the military branches."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Commander in Chief.",
+                                        "isCorrect": true,
+                                        "rationale": "As Commander in Chief under Article II, Section 2, the president exercises civilian command authority over the military branches."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Chief Diplomat.",
+                                        "isCorrect": false,
+                                        "rationale": "As Commander in Chief under Article II, Section 2, the president exercises civilian command authority over the military branches."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Party Chief.",
+                                        "isCorrect": false,
+                                        "rationale": "As Commander in Chief under Article II, Section 2, the president exercises civilian command authority over the military branches."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Look for the specific Article II designation that places a civilian executive at the head of the armed forces."
+          },
+          {
+                    "id": "Pres-1-16",
+                    "question": "When the President travels abroad to sign a foreign peace agreement with another country's prime minister, they are fulfilling the role of:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Head of State.",
+                                        "isCorrect": false,
+                                        "rationale": "In the capacity of Chief Diplomat, the president directs foreign policy, negotiates treaties and executive pacts, and engages with international leaders."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Chief Executive.",
+                                        "isCorrect": false,
+                                        "rationale": "In the capacity of Chief Diplomat, the president directs foreign policy, negotiates treaties and executive pacts, and engages with international leaders."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Chief Diplomat.",
+                                        "isCorrect": true,
+                                        "rationale": "In the capacity of Chief Diplomat, the president directs foreign policy, negotiates treaties and executive pacts, and engages with international leaders."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Chief Legislator.",
+                                        "isCorrect": false,
+                                        "rationale": "In the capacity of Chief Diplomat, the president directs foreign policy, negotiates treaties and executive pacts, and engages with international leaders."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "Focus on the presidential responsibility that governs formal international relations and state treaties."
+          },
+          {
+                    "id": "Pres-1-17",
+                    "question": "Which of the following is an example of the President acting as Head of State?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Lighting the National Christmas Tree during an annual public holiday celebration.",
+                                        "isCorrect": true,
+                                        "rationale": "The Head of State role entails symbolic, ceremonial functions in which the president acts as the living embodiment of the nation."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Appointing a new director to lead the Federal Bureau of Investigation.",
+                                        "isCorrect": false,
+                                        "rationale": "The Head of State role entails symbolic, ceremonial functions in which the president acts as the living embodiment of the nation."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Vetoing an energy regulation passed by the House of Representatives.",
+                                        "isCorrect": false,
+                                        "rationale": "The Head of State role entails symbolic, ceremonial functions in which the president acts as the living embodiment of the nation."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Directing military generals to launch strikes against an enemy outpost.",
+                                        "isCorrect": false,
+                                        "rationale": "The Head of State role entails symbolic, ceremonial functions in which the president acts as the living embodiment of the nation."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Differentiate between partisan, administrative, or military actions and symbolic activities that represent the nation as a whole."
+          },
+          {
+                    "id": "Pres-1-18",
+                    "question": "When the President travels to endorse congressional candidates and fundraise for their political party, they are serving as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Chief Diplomat.",
+                                        "isCorrect": false,
+                                        "rationale": "As Party Chief, the president serves as the primary leader and campaigner for their national political organization."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Head of State.",
+                                        "isCorrect": false,
+                                        "rationale": "As Party Chief, the president serves as the primary leader and campaigner for their national political organization."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Party Chief.",
+                                        "isCorrect": true,
+                                        "rationale": "As Party Chief, the president serves as the primary leader and campaigner for their national political organization."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Chief Executive.",
+                                        "isCorrect": false,
+                                        "rationale": "As Party Chief, the president serves as the primary leader and campaigner for their national political organization."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "Consider which capacity involves advancing the electoral fortunes and fundraising efforts of fellow partisans."
+          },
+          {
+                    "id": "Pres-1-19",
+                    "question": "What does a presidential veto accomplish?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "It allows the president to remove a sitting federal judge from office.",
+                                        "isCorrect": false,
+                                        "rationale": "The veto is the president's constitutional authority under Article I, Section 7 to reject legislative bills passed by Congress."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "It rejects a bill passed by Congress and prevents it from becoming law.",
+                                        "isCorrect": true,
+                                        "rationale": "The veto is the president's constitutional authority under Article I, Section 7 to reject legislative bills passed by Congress."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "It ratifies an international trade pact without needing Senate debate.",
+                                        "isCorrect": false,
+                                        "rationale": "The veto is the president's constitutional authority under Article I, Section 7 to reject legislative bills passed by Congress."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "It cancels all state criminal charges filed against an executive appointee.",
+                                        "isCorrect": false,
+                                        "rationale": "The veto is the president's constitutional authority under Article I, Section 7 to reject legislative bills passed by Congress."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Consider the constitutional check the executive holds to refuse endorsement of a bill before it can become law."
+          },
+          {
+                    "id": "Pres-1-20",
+                    "question": "What is an Executive Order?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "A presidential rule directing federal agencies that carries the force of law.",
+                                        "isCorrect": true,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and enforcement operations, carrying the legal force of law without requiring congressional enactment."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "A bill passed by both houses of Congress during a joint emergency session.",
+                                        "isCorrect": false,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and enforcement operations, carrying the legal force of law without requiring congressional enactment."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "A formal ruling handed down by the Supreme Court to declare a law invalid.",
+                                        "isCorrect": false,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and enforcement operations, carrying the legal force of law without requiring congressional enactment."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "An official petition signed by state governors demanding federal highway funds.",
+                                        "isCorrect": false,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and enforcement operations, carrying the legal force of law without requiring congressional enactment."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Think about how the president directs the federal bureaucracy to carry out statutory policy without passing new legislation."
+          },
+          {
+                    "id": "Pres-1-21",
+                    "question": "What legal power allows a President to forgive a person's federal crime and restore their rights?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "A pocket veto.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 2 grants the president the unilateral authority to issue reprieves and pardons for federal crimes."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "A presidential pardon.",
+                                        "isCorrect": true,
+                                        "rationale": "Article II, Section 2 grants the president the unilateral authority to issue reprieves and pardons for federal crimes."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "An executive order.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 2 grants the president the unilateral authority to issue reprieves and pardons for federal crimes."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "A senatorial override.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 2 grants the president the unilateral authority to issue reprieves and pardons for federal crimes."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Distinguish between administrative rules for federal agencies and the power to forgive federal judicial offenses."
+          },
+          {
+                    "id": "Pres-1-22",
+                    "question": "Why do presidential candidates often look to 'balance the ticket' when picking a running mate?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "To satisfy a constitutional rule requiring candidates from opposing parties.",
+                                        "isCorrect": false,
+                                        "rationale": "Balancing the ticket refers to choosing a vice-presidential nominee whose demographic, regional, or ideological characteristics appeal to voter segments the top candidate might not attract alone."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "To attract voters from different regions or demographic backgrounds.",
+                                        "isCorrect": true,
+                                        "rationale": "Balancing the ticket refers to choosing a vice-presidential nominee whose demographic, regional, or ideological characteristics appeal to voter segments the top candidate might not attract alone."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "To guarantee that the Supreme Court confirms all executive staff choices.",
+                                        "isCorrect": false,
+                                        "rationale": "Balancing the ticket refers to choosing a vice-presidential nominee whose demographic, regional, or ideological characteristics appeal to voter segments the top candidate might not attract alone."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "To permit both individuals to cast votes in Senate debates simultaneously.",
+                                        "isCorrect": false,
+                                        "rationale": "Balancing the ticket refers to choosing a vice-presidential nominee whose demographic, regional, or ideological characteristics appeal to voter segments the top candidate might not attract alone."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Think about how a campaign reaches out to voter segments where the nominee might personally have limited appeal."
+          },
+          {
+                    "id": "Pres-1-23",
+                    "question": "What is the primary purpose of the President's Cabinet?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "To serve as heads of executive departments and advise the President.",
+                                        "isCorrect": true,
+                                        "rationale": "The cabinet is composed of the heads of the fifteen executive departments whose primary function is to administer statutory departments and advise the president."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "To draft and pass federal statutory budgets in place of the House.",
+                                        "isCorrect": false,
+                                        "rationale": "The cabinet is composed of the heads of the fifteen executive departments whose primary function is to administer statutory departments and advise the president."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "To decide constitutional challenges appealed from federal district courts.",
+                                        "isCorrect": false,
+                                        "rationale": "The cabinet is composed of the heads of the fifteen executive departments whose primary function is to administer statutory departments and advise the president."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "To select state electors for the presidential election every November.",
+                                        "isCorrect": false,
+                                        "rationale": "The cabinet is composed of the heads of the fifteen executive departments whose primary function is to administer statutory departments and advise the president."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Focus on the institutional position of cabinet secretaries as chiefs of large administrative agencies assisting the executive."
+          },
+          {
+                    "id": "Pres-1-24",
+                    "question": "What does the term 'Kitchen Cabinet' refer to in American politics?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The committee responsible for planning official White House state dinners.",
+                                        "isCorrect": false,
+                                        "rationale": "Originating under President Andrew Jackson, 'Kitchen Cabinet' describes a president's unofficial group of personal advisers who operate outside the formal departmental cabinet structure."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "An informal circle of trusted personal advisers consulted by the President.",
+                                        "isCorrect": true,
+                                        "rationale": "Originating under President Andrew Jackson, 'Kitchen Cabinet' describes a president's unofficial group of personal advisers who operate outside the formal departmental cabinet structure."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The congressional panel that screens cabinet department nominations.",
+                                        "isCorrect": false,
+                                        "rationale": "Originating under President Andrew Jackson, 'Kitchen Cabinet' describes a president's unofficial group of personal advisers who operate outside the formal departmental cabinet structure."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "The military officers who safeguard the emergency presidential briefcase.",
+                                        "isCorrect": false,
+                                        "rationale": "Originating under President Andrew Jackson, 'Kitchen Cabinet' describes a president's unofficial group of personal advisers who operate outside the formal departmental cabinet structure."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Differentiate between the formal, Senate-confirmed department heads and the president's close unofficial confidants."
+          },
+          {
+                    "id": "Pres-1-25",
+                    "question": "In the United States, how is the President officially chosen?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Through electors allocated to each state in the Electoral College.",
+                                        "isCorrect": true,
+                                        "rationale": "The U.S. Constitution creates an indirect election mechanism where citizens vote for slates of electors who cast the official ballots in the Electoral College."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Directly by total national popular vote totals on election night.",
+                                        "isCorrect": false,
+                                        "rationale": "The U.S. Constitution creates an indirect election mechanism where citizens vote for slates of electors who cast the official ballots in the Electoral College."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "By a special runoff election held inside the U.S. Supreme Court.",
+                                        "isCorrect": false,
+                                        "rationale": "The U.S. Constitution creates an indirect election mechanism where citizens vote for slates of electors who cast the official ballots in the Electoral College."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Through a private vote taken by all fifty state governors combined.",
+                                        "isCorrect": false,
+                                        "rationale": "The U.S. Constitution creates an indirect election mechanism where citizens vote for slates of electors who cast the official ballots in the Electoral College."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Recall whether the American constitutional framework establishes a direct national vote or an indirect state-by-state representative mechanism."
+          }
+],
         "Level 2": [
           {
                     "id": "Pres-2-1",

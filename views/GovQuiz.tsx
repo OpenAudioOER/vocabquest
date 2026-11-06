@@ -12,6 +12,7 @@ export const GovQuiz: React.FC = () => {
     const [questions, setQuestions] = useState<QuizQuestion[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [wrongAttempts, setWrongAttempts] = useState<string[]>([]);
     const [score, setScore] = useState(0);
     const [isShaking, setIsShaking] = useState(false);
     const [showHint, setShowHint] = useState(false);
@@ -24,11 +25,15 @@ export const GovQuiz: React.FC = () => {
         const topicData = govQuizData[topic]?.[level] || [];
         if (topicData.length === 0) return;
 
-        // Randomly select 15 questions (or all if fewer than 15)
-        const shuffledQuestions = [...topicData].sort(() => 0.5 - Math.random()).slice(0, 15);
+        const isPresidentQuiz = topic === 'The President & Public Opinion';
+
+        // For President quiz, present all questions; for others, pick 15 questions randomly
+        const questionPool = isPresidentQuiz
+            ? [...topicData].sort(() => 0.5 - Math.random())
+            : [...topicData].sort(() => 0.5 - Math.random()).slice(0, 15);
         
         // Randomize the options for each question (preserves True/False standard order)
-        const randomizedQuestions = shuffledQuestions.map(q => {
+        const randomizedQuestions = questionPool.map(q => {
             const isTrueFalse = q.options.length === 2 && 
                 q.options.some(o => o.text.trim().toLowerCase() === 'true') && 
                 q.options.some(o => o.text.trim().toLowerCase() === 'false');
@@ -58,27 +63,51 @@ export const GovQuiz: React.FC = () => {
         setQuestions(randomizedQuestions);
         setCurrentIndex(0);
         setSelectedOption(null);
+        setWrongAttempts([]);
         setScore(0);
         setShowHint(false);
         setGameState('playing');
     };
 
     const handleOptionSelect = (optionLabel: string) => {
-        if (selectedOption !== null) return; // Prevent changing answer
-        setSelectedOption(optionLabel);
-        
+        const isPresidentQuiz = topic === 'The President & Public Opinion';
         const currentQ = questions[currentIndex];
-        if (optionLabel === currentQ.correctAnswer) {
-            setScore(prev => prev + 1);
-            confetti({
-                particleCount: 100,
-                spread: 70,
-                origin: { y: 0.6 },
-                colors: ['#164ea5', '#87b3f8', '#fed664', '#83c997']
-            });
+
+        if (isPresidentQuiz) {
+            if (selectedOption !== null || wrongAttempts.includes(optionLabel)) return;
+
+            if (optionLabel === currentQ.correctAnswer) {
+                if (wrongAttempts.length === 0) {
+                    setScore(prev => prev + 1);
+                }
+                setSelectedOption(optionLabel);
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#164ea5', '#87b3f8', '#fed664', '#83c997']
+                });
+            } else {
+                setWrongAttempts(prev => [...prev, optionLabel]);
+                setIsShaking(true);
+                setTimeout(() => setIsShaking(false), 500);
+            }
         } else {
-            setIsShaking(true);
-            setTimeout(() => setIsShaking(false), 500);
+            if (selectedOption !== null) return; // Prevent changing answer
+            setSelectedOption(optionLabel);
+            
+            if (optionLabel === currentQ.correctAnswer) {
+                setScore(prev => prev + 1);
+                confetti({
+                    particleCount: 100,
+                    spread: 70,
+                    origin: { y: 0.6 },
+                    colors: ['#164ea5', '#87b3f8', '#fed664', '#83c997']
+                });
+            } else {
+                setIsShaking(true);
+                setTimeout(() => setIsShaking(false), 500);
+            }
         }
     };
 
@@ -86,6 +115,7 @@ export const GovQuiz: React.FC = () => {
         if (currentIndex + 1 < questions.length) {
             setCurrentIndex(prev => prev + 1);
             setSelectedOption(null);
+            setWrongAttempts([]);
             setShowHint(false);
         } else {
             setGameState('completed');
@@ -96,6 +126,8 @@ export const GovQuiz: React.FC = () => {
         setGameState('setup');
         setTopic('');
         setLevel('');
+        setSelectedOption(null);
+        setWrongAttempts([]);
         setShowHint(false);
     };
 
@@ -229,7 +261,7 @@ export const GovQuiz: React.FC = () => {
                             className="w-full py-5 rounded-2xl bg-primary text-white font-black text-xl shadow-glow-blue hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-8 flex items-center justify-center group"
                         >
                             <PlayCircle className="mr-3 group-hover:scale-110 transition-transform" size={28} />
-                            Start Randomized Quiz
+                            {topic === 'The President & Public Opinion' ? 'Start Practice Exam (25 Questions)' : 'Start Randomized Quiz (15 Questions)'}
                         </button>
                     </div>
                 </div>
@@ -266,6 +298,7 @@ export const GovQuiz: React.FC = () => {
     }
 
     const currentQ = questions[currentIndex];
+    const isPresidentQuiz = topic === 'The President & Public Opinion';
     const isAnswered = selectedOption !== null;
 
     return (
@@ -320,26 +353,32 @@ export const GovQuiz: React.FC = () => {
 
                     <div className="space-y-3">
                         {currentQ.options.map((opt) => {
-                            let optionClass = "bg-slate-50 border-slate-200 text-slate-700 hover:border-primary-light hover:bg-slate-100";
+                            let optionClass = "bg-slate-50 border-slate-200 text-slate-700 hover:border-primary-light hover:bg-slate-100 cursor-pointer";
                             let Icon = null;
+                            const isWrong = wrongAttempts.includes(opt.label);
 
                             if (isAnswered) {
                                 if (opt.label === currentQ.correctAnswer) {
-                                    optionClass = "bg-mint-green/30 border-sage-green text-slate-900 shadow-sm";
+                                    optionClass = "bg-mint-green/30 border-sage-green text-slate-900 shadow-sm cursor-default";
                                     Icon = <CheckCircle2 className="text-sage-green" size={24} />;
-                                } else if (opt.label === selectedOption) {
-                                    optionClass = "bg-red-50 border-red-200 text-slate-900";
+                                } else if (opt.label === selectedOption || isWrong) {
+                                    optionClass = "bg-red-50 border-red-200 text-slate-400 opacity-50 cursor-default line-through";
                                     Icon = <XCircle className="text-red-400" size={24} />;
                                 } else {
-                                    optionClass = "bg-slate-50 border-slate-200 text-slate-400 opacity-50";
+                                    optionClass = "bg-slate-50 border-slate-200 text-slate-400 opacity-50 cursor-default";
                                 }
+                            } else if (isWrong) {
+                                optionClass = "bg-red-50/80 border-red-200 text-red-500 opacity-60 cursor-not-allowed line-through";
+                                Icon = <XCircle className="text-red-400" size={24} />;
                             }
+
+                            const isDisabled = isAnswered || isWrong;
 
                             return (
                                 <button
                                     key={opt.label}
                                     onClick={() => handleOptionSelect(opt.label)}
-                                    disabled={isAnswered}
+                                    disabled={isDisabled}
                                     className={`w-full text-left p-4 rounded-2xl border-2 font-medium flex items-center justify-between transition-all ${optionClass}`}
                                 >
                                     <div className="flex items-center pr-4">
@@ -353,6 +392,13 @@ export const GovQuiz: React.FC = () => {
                             );
                         })}
                     </div>
+
+                    {isPresidentQuiz && wrongAttempts.length > 0 && !isAnswered && (
+                        <div className="mt-4 p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-amber-900 text-sm font-semibold flex items-center animate-fade-in shadow-xs">
+                            <XCircle size={18} className="mr-2 text-amber-600 flex-shrink-0" />
+                            <span>Incorrect choice. Take another look and try again!</span>
+                        </div>
+                    )}
                 </div>
 
                 {/* Feedback & Next Button */}
@@ -366,7 +412,17 @@ export const GovQuiz: React.FC = () => {
                             <h4 className={`text-lg font-bold mb-2 flex items-center ${
                                 selectedOption === currentQ.correctAnswer ? 'text-sage-green' : 'text-amber-600'
                             }`}>
-                                {selectedOption === currentQ.correctAnswer ? 'Correct!' : 'Incorrect'}
+                                {selectedOption === currentQ.correctAnswer ? (
+                                    <>
+                                        <CheckCircle2 size={20} className="mr-2" />
+                                        {isPresidentQuiz && wrongAttempts.length > 0 ? 'Correct! (Solved after retry)' : 'Correct!'}
+                                    </>
+                                ) : (
+                                    <>
+                                        <XCircle size={20} className="mr-2" />
+                                        Incorrect
+                                    </>
+                                )}
                             </h4>
                             <p className="text-slate-700 font-medium text-lg leading-relaxed">
                                 {currentQ.options.find(o => o.label === currentQ.correctAnswer)?.rationale}
