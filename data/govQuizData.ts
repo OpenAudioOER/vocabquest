@@ -10,6 +10,7 @@ export type QuizQuestion = {
     question: string;
     options: QuizOption[];
     correctAnswer: string;
+    hint?: string;
 };
 
 export type GovQuizData = {
@@ -3527,5 +3528,762 @@ export const govQuizData: GovQuizData = {
                 "correctAnswer": "B"
             }
         ]
+    },
+    "The President & Public Opinion": {
+        "Level 1": [],
+        "Level 2": [
+          {
+                    "id": "Pres-2-1",
+                    "question": "A city newspaper surveys 800 residents about a proposed municipal bond: 46% favor it, 50% oppose it, and the margin of error is ± 4.0%. How should a researcher interpret these results?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The measure has definitively been rejected by local voters.",
+                                        "isCorrect": false,
+                                        "rationale": "Because the confidence interval for support (42% to 50%) overlaps with opposition (46% to 54%), the contest is within the margin of error and cannot be definitively declared."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Support and opposition overlap within the statistical confidence window.",
+                                        "isCorrect": true,
+                                        "rationale": "Because the confidence interval for support (42% to 50%) overlaps with opposition (46% to 54%), the contest is within the margin of error and cannot be definitively declared."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "A larger population will always reduce the survey's margin of error.",
+                                        "isCorrect": false,
+                                        "rationale": "Because the confidence interval for support (42% to 50%) overlaps with opposition (46% to 54%), the contest is within the margin of error and cannot be definitively declared."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "City workers were systematically excluded from answering the survey call.",
+                                        "isCorrect": false,
+                                        "rationale": "Because the confidence interval for support (42% to 50%) overlaps with opposition (46% to 54%), the contest is within the margin of error and cannot be definitively declared."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Calculate the top range for the 46% support group (46 + 4 = 50) and the bottom range for the 50% opposition group (50 - 4 = 46)."
+          },
+          {
+                    "id": "Pres-2-2",
+                    "question": "A local news broadcast displays a phone number and asks viewers to text 'YES' or 'NO' to rate the governor's speech. Political scientists treat this as a straw poll primarily because:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "State law prevents televised media outlets from measuring voter attitudes.",
+                                        "isCorrect": false,
+                                        "rationale": "Straw polls rely on non-random, self-selected populations rather than systematic random sampling where every member of the target population has a known chance of selection."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Viewers choose whether to participate, creating a self-selected sample.",
+                                        "isCorrect": true,
+                                        "rationale": "Straw polls rely on non-random, self-selected populations rather than systematic random sampling where every member of the target population has a known chance of selection."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The news broadcast failed to publish its margin of error beforehand.",
+                                        "isCorrect": false,
+                                        "rationale": "Straw polls rely on non-random, self-selected populations rather than systematic random sampling where every member of the target population has a known chance of selection."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Modern scientific polling can only occur during an official election cycle.",
+                                        "isCorrect": false,
+                                        "rationale": "Straw polls rely on non-random, self-selected populations rather than systematic random sampling where every member of the target population has a known chance of selection."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Recall why class polls or call-in polls cannot speak for the whole public: respondents decide on their own to opt in."
+          },
+          {
+                    "id": "Pres-2-3",
+                    "question": "The primary methodological lesson taught by the failure of the 1936 Literary Digest poll is that:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "In-person precinct interviews are mandatory for reliable national results.",
+                                        "isCorrect": false,
+                                        "rationale": "Sampling bias cannot be solved by simply gathering more respondents. If the underlying frame excludes key demographic groups, the resulting conclusions will remain flawed."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Huge sample numbers cannot compensate for an unrepresentative sampling frame.",
+                                        "isCorrect": true,
+                                        "rationale": "Sampling bias cannot be solved by simply gathering more respondents. If the underlying frame excludes key demographic groups, the resulting conclusions will remain flawed."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Early voting patterns always contradict predictions made by telephone surveys.",
+                                        "isCorrect": false,
+                                        "rationale": "Sampling bias cannot be solved by simply gathering more respondents. If the underlying frame excludes key demographic groups, the resulting conclusions will remain flawed."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Polling firms must limit their surveys exclusively to registered party voters.",
+                                        "isCorrect": false,
+                                        "rationale": "Sampling bias cannot be solved by simply gathering more respondents. If the underlying frame excludes key demographic groups, the resulting conclusions will remain flawed."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "The magazine surveyed over two million people, yet got the outcome completely wrong because of who was on their mailing lists."
+          },
+          {
+                    "id": "Pres-2-4",
+                    "question": "A survey company tests two formulations of a question regarding tax policy: Version 1 asks about an 'estate tax on inherited multi-million-dollar fortunes,' while Version 2 asks about a 'death tax on family savings.' The predictable difference in public support across these two questions illustrates:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Push polling designed to suppress turnout among suburban residents.",
+                                        "isCorrect": false,
+                                        "rationale": "Framing effects occur when the phrasing, vocabulary, or conceptual perspective used in a prompt substantially shapes how respondents evaluate the issue."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Selection bias caused by surveying unrepresentative demographic groups.",
+                                        "isCorrect": false,
+                                        "rationale": "Framing effects occur when the phrasing, vocabulary, or conceptual perspective used in a prompt substantially shapes how respondents evaluate the issue."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Framing effects where rhetorical labels alter how an issue is perceived.",
+                                        "isCorrect": true,
+                                        "rationale": "Framing effects occur when the phrasing, vocabulary, or conceptual perspective used in a prompt substantially shapes how respondents evaluate the issue."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Priming effects created by asking long sequences of economic queries.",
+                                        "isCorrect": false,
+                                        "rationale": "Framing effects occur when the phrasing, vocabulary, or conceptual perspective used in a prompt substantially shapes how respondents evaluate the issue."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "Both versions ask about the exact same statute, but the chosen wording frames the tax in sharply contrasting ways."
+          },
+          {
+                    "id": "Pres-2-5",
+                    "question": "If a questionnaire asks respondents five detailed questions about recent factory closures and inflation before asking whether the country is on the 'right track,' the pollster has introduced:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Priming effects, because previous questions highlighted specific evaluative criteria.",
+                                        "isCorrect": true,
+                                        "rationale": "Priming occurs when the sequence of preceding questions makes particular criteria more accessible in the respondent's memory when making a subsequent evaluation."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Consensus opinion, because respondents will naturally agree with the survey host.",
+                                        "isCorrect": false,
+                                        "rationale": "Priming occurs when the sequence of preceding questions makes particular criteria more accessible in the respondent's memory when making a subsequent evaluation."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Selection bias, because only citizens harmed by factory closures answered phones.",
+                                        "isCorrect": false,
+                                        "rationale": "Priming occurs when the sequence of preceding questions makes particular criteria more accessible in the respondent's memory when making a subsequent evaluation."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Straw polling, because the pollster failed to calculate a standard deviation.",
+                                        "isCorrect": false,
+                                        "rationale": "Priming occurs when the sequence of preceding questions makes particular criteria more accessible in the respondent's memory when making a subsequent evaluation."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Pay attention to how the order of topics activates specific memories right before an overall evaluation."
+          },
+          {
+                    "id": "Pres-2-6",
+                    "question": "Which of the following issue environments best reflects divided opinion in American politics?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "92% of adults favoring clean drinking water infrastructure improvements.",
+                                        "isCorrect": false,
+                                        "rationale": "Divided opinion occurs when public sentiment is polarized between two distinct, opposing viewpoints rather than coalescing around broad consensus."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "88% of parents supporting mandatory criminal background checks for teachers.",
+                                        "isCorrect": false,
+                                        "rationale": "Divided opinion occurs when public sentiment is polarized between two distinct, opposing viewpoints rather than coalescing around broad consensus."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "49% favoring higher offshore oil leasing and 47% opposing further leasing.",
+                                        "isCorrect": true,
+                                        "rationale": "Divided opinion occurs when public sentiment is polarized between two distinct, opposing viewpoints rather than coalescing around broad consensus."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "79% supporting increased federal pay allowances for active-duty combat troops.",
+                                        "isCorrect": false,
+                                        "rationale": "Divided opinion occurs when public sentiment is polarized between two distinct, opposing viewpoints rather than coalescing around broad consensus."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "Look for the policy issue where the public splits into two competing, nearly equal camps."
+          },
+          {
+                    "id": "Pres-2-7",
+                    "question": "When an opinion poll discovers that men aged 18 to 29 are underrepresented compared to their proportion in census records, researchers:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Assign greater mathematical weight to each young male response collected.",
+                                        "isCorrect": true,
+                                        "rationale": "Weighting statistically adjusts individual responses so that underrepresented or overrepresented demographic categories match known population distribution benchmarks."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Cancel the survey and rerun all interviews using in-person intercept polls.",
+                                        "isCorrect": false,
+                                        "rationale": "Weighting statistically adjusts individual responses so that underrepresented or overrepresented demographic categories match known population distribution benchmarks."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Automatically double the published margin of error for all age categories.",
+                                        "isCorrect": false,
+                                        "rationale": "Weighting statistically adjusts individual responses so that underrepresented or overrepresented demographic categories match known population distribution benchmarks."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Reclassify the project as an unscientific straw poll in public reports.",
+                                        "isCorrect": false,
+                                        "rationale": "Weighting statistically adjusts individual responses so that underrepresented or overrepresented demographic categories match known population distribution benchmarks."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Review how pollsters statistically balance sample demographics to match real-world population benchmarks."
+          },
+          {
+                    "id": "Pres-2-8",
+                    "question": "In political science, a sudden, dramatic spike in presidential approval ratings following an unexpected overseas military incident is known as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The executive prerogative dynamic.",
+                                        "isCorrect": false,
+                                        "rationale": "The 'rally 'round the flag' effect is an established phenomenon where public approval for the national executive temporarily surges during foreign crises or sudden military conflicts."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "The honeymoon period phenomenon.",
+                                        "isCorrect": false,
+                                        "rationale": "The 'rally 'round the flag' effect is an established phenomenon where public approval for the national executive temporarily surges during foreign crises or sudden military conflicts."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "A rally 'round the flag effect.",
+                                        "isCorrect": true,
+                                        "rationale": "The 'rally 'round the flag' effect is an established phenomenon where public approval for the national executive temporarily surges during foreign crises or sudden military conflicts."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "A divided opinion consolidation.",
+                                        "isCorrect": false,
+                                        "rationale": "The 'rally 'round the flag' effect is an established phenomenon where public approval for the national executive temporarily surges during foreign crises or sudden military conflicts."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "This effect describes citizens uniting behind the Commander in Chief during moments of acute international peril."
+          },
+          {
+                    "id": "Pres-2-9",
+                    "question": "A voter receives an automated telephone survey asking: 'Would you support Senator Williams knowing that his business partners were indicted for embezzlement?' This call is best classified as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "An unweighted benchmark poll.",
+                                        "isCorrect": false,
+                                        "rationale": "Push polls are disguised campaigning techniques designed to push voters away from a candidate by feeding them loaded, negative information."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "A push poll designed to influence voters.",
+                                        "isCorrect": true,
+                                        "rationale": "Push polls are disguised campaigning techniques designed to push voters away from a candidate by feeding them loaded, negative information."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "A random representative exit poll.",
+                                        "isCorrect": false,
+                                        "rationale": "Push polls are disguised campaigning techniques designed to push voters away from a candidate by feeding them loaded, negative information."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "An official party nomination primary.",
+                                        "isCorrect": false,
+                                        "rationale": "Push polls are disguised campaigning techniques designed to push voters away from a candidate by feeding them loaded, negative information."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "The primary intent here is not to measure public opinion, but to seed damaging allegations under the guise of research."
+          },
+          {
+                    "id": "Pres-2-10",
+                    "question": "Political socialization research indicates that fundamental partisan leanings and ideological predispositions typically take root:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "During retirement years when citizens begin receiving social insurance.",
+                                        "isCorrect": false,
+                                        "rationale": "Primary political socialization occurs early in development, where the family and primary social networks instill durable cultural and political orientations."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "During late middle age when citizens acquire corporate executive positions.",
+                                        "isCorrect": false,
+                                        "rationale": "Primary political socialization occurs early in development, where the family and primary social networks instill durable cultural and political orientations."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "During childhood and adolescence through family, schooling, and peers.",
+                                        "isCorrect": true,
+                                        "rationale": "Primary political socialization occurs early in development, where the family and primary social networks instill durable cultural and political orientations."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "During a citizen's first formal term serving on a municipal civil jury.",
+                                        "isCorrect": false,
+                                        "rationale": "Primary political socialization occurs early in development, where the family and primary social networks instill durable cultural and political orientations."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "Focus on the study guide question: 'When are most attitudes formed?'"
+          },
+          {
+                    "id": "Pres-2-11",
+                    "question": "True or False: If a survey population is thoroughly mixed, a properly drawn random sample of 1,500 people can accurately gauge national sentiment without polling hundreds of thousands of people.",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "True",
+                                        "isCorrect": true,
+                                        "rationale": "Probability theory demonstrates that once a population is thoroughly mixed, a representative sample of approximately 1,000 to 1,500 provides a reliable estimate with a small margin of error regardless of total population size."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "False",
+                                        "isCorrect": false,
+                                        "rationale": "Probability theory demonstrates that once a population is thoroughly mixed, a representative sample of approximately 1,000 to 1,500 provides a reliable estimate with a small margin of error regardless of total population size."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Think back to tasting soup from a pot: one well-stirred spoonful gives you the taste whether the pot is small or large."
+          },
+          {
+                    "id": "Pres-2-12",
+                    "question": "True or False: 'Public opinion' in political science refers exclusively to unanimous policy positions endorsed by all adult citizens.",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "True",
+                                        "isCorrect": false,
+                                        "rationale": "Public opinion is defined as the aggregate of individual attitudes or beliefs shared by some portion of the adult population, and rarely requires complete unanimity."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "False",
+                                        "isCorrect": true,
+                                        "rationale": "Public opinion is defined as the aggregate of individual attitudes or beliefs shared by some portion of the adult population, and rarely requires complete unanimity."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Re-read the definition: public opinion is the aggregate of individual beliefs shared by some portion of the adult population."
+          },
+          {
+                    "id": "Pres-2-13",
+                    "question": "Which of the following individuals satisfies every constitutional prerequisite under Article II to serve as President?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "A 33-year-old native-born governor who has lived in Illinois since birth.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II requires the president to be a natural-born citizen, at least 35 years old, and a resident within the United States for at least 14 years."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "A 46-year-old citizen born in Detroit who lived in Canada for 35 consecutive years.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II requires the president to be a natural-born citizen, at least 35 years old, and a resident within the United States for at least 14 years."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "A 52-year-old naturalized citizen who has lived in Florida for thirty years.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II requires the president to be a natural-born citizen, at least 35 years old, and a resident within the United States for at least 14 years."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "A 39-year-old citizen born in Ohio who has lived in New York for twenty years.",
+                                        "isCorrect": true,
+                                        "rationale": "Article II requires the president to be a natural-born citizen, at least 35 years old, and a resident within the United States for at least 14 years."
+                              }
+                    ],
+                    "correctAnswer": "D",
+                    "hint": "Check all three constitutional gates: minimum age of 35, natural-born citizenship, and at least 14 years of domestic residency."
+          },
+          {
+                    "id": "Pres-2-14",
+                    "question": "A President who threatens to veto a pending environmental bill unless congressional leaders add tax incentives is acting as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Head of State.",
+                                        "isCorrect": false,
+                                        "rationale": "In the role of Chief Legislator, the president actively shapes the legislative agenda, recommends legislation, and exercises or threatens the constitutional veto."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Chief Executive.",
+                                        "isCorrect": false,
+                                        "rationale": "In the role of Chief Legislator, the president actively shapes the legislative agenda, recommends legislation, and exercises or threatens the constitutional veto."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Chief Legislator.",
+                                        "isCorrect": true,
+                                        "rationale": "In the role of Chief Legislator, the president actively shapes the legislative agenda, recommends legislation, and exercises or threatens the constitutional veto."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Commander in Chief.",
+                                        "isCorrect": false,
+                                        "rationale": "In the role of Chief Legislator, the president actively shapes the legislative agenda, recommends legislation, and exercises or threatens the constitutional veto."
+                              }
+                    ],
+                    "correctAnswer": "C",
+                    "hint": "This role involves actively proposing, shaping, negotiating, or rejecting statutory bills produced by Congress."
+          },
+          {
+                    "id": "Pres-2-15",
+                    "question": "When the President hosts a formal White House dinner honoring Olympic athletes, the President is performing the role of:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Chief Executive managing civil service staff.",
+                                        "isCorrect": false,
+                                        "rationale": "As Head of State, the president acts as the ceremonial and symbolic leader representing the entire country."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Head of State performing ceremonial duties.",
+                                        "isCorrect": true,
+                                        "rationale": "As Head of State, the president acts as the ceremonial and symbolic leader representing the entire country."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Chief Diplomat negotiating international pacts.",
+                                        "isCorrect": false,
+                                        "rationale": "As Head of State, the president acts as the ceremonial and symbolic leader representing the entire country."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Party Chief directing national campaign funds.",
+                                        "isCorrect": false,
+                                        "rationale": "As Head of State, the president acts as the ceremonial and symbolic leader representing the entire country."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Look for symbolic and ceremonial leadership representing the nation as a united whole."
+          },
+          {
+                    "id": "Pres-2-16",
+                    "question": "Directing the Federal Bureau of Investigation to prioritize counter-espionage investigations falls under the President's constitutional role as:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Chief Legislator.",
+                                        "isCorrect": false,
+                                        "rationale": "As Chief Executive, the president is constitutionally responsible for executing the laws and directing the executive branch agencies."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Chief Executive.",
+                                        "isCorrect": true,
+                                        "rationale": "As Chief Executive, the president is constitutionally responsible for executing the laws and directing the executive branch agencies."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Head of State.",
+                                        "isCorrect": false,
+                                        "rationale": "As Chief Executive, the president is constitutionally responsible for executing the laws and directing the executive branch agencies."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Party Chief.",
+                                        "isCorrect": false,
+                                        "rationale": "As Chief Executive, the president is constitutionally responsible for executing the laws and directing the executive branch agencies."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "This power stems directly from the executive mandate to oversee federal departments and enforce domestic law."
+          },
+          {
+                    "id": "Pres-2-17",
+                    "question": "If the President rejects a defense appropriations bill, Congress can enact it anyway only if:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The Speaker of the House issues a discharge petition against the White House.",
+                                        "isCorrect": false,
+                                        "rationale": "Article I, Section 7 dictates that a presidential veto can be overridden only by a two-thirds vote in both the House and the Senate."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "A two-thirds supermajority in both chambers votes to override the executive veto.",
+                                        "isCorrect": true,
+                                        "rationale": "Article I, Section 7 dictates that a presidential veto can be overridden only by a two-thirds vote in both the House and the Senate."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The Supreme Court certifies that the bill complies with constitutional limits.",
+                                        "isCorrect": false,
+                                        "rationale": "Article I, Section 7 dictates that a presidential veto can be overridden only by a two-thirds vote in both the House and the Senate."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "A majority of state governors sign a joint petition directing its enactment.",
+                                        "isCorrect": false,
+                                        "rationale": "Article I, Section 7 dictates that a presidential veto can be overridden only by a two-thirds vote in both the House and the Senate."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Overcoming an executive veto requires a formidable two-thirds hurdle across both the House and the Senate."
+          },
+          {
+                    "id": "Pres-2-18",
+                    "question": "An Executive Order issued by the President:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Carries the legal force of law to direct the administrative branch.",
+                                        "isCorrect": true,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and operations, carrying the force of law without requiring congressional passage."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Must be ratified by a two-thirds majority in the United States Senate.",
+                                        "isCorrect": false,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and operations, carrying the force of law without requiring congressional passage."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Automatically amends statutory provisions enacted by previous Congresses.",
+                                        "isCorrect": false,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and operations, carrying the force of law without requiring congressional passage."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Can never be altered or revoked by any subsequent presidential administration.",
+                                        "isCorrect": false,
+                                        "rationale": "Executive orders are official directives issued by the president to manage federal agencies and operations, carrying the force of law without requiring congressional passage."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "These directives manage federal agency operations under existing statutory or constitutional authority."
+          },
+          {
+                    "id": "Pres-2-19",
+                    "question": "Which scenario represents an exercise of presidential clemency that is constitutionally permitted under Article II?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Nullifying a governor's state conviction for vehicular manslaughter.",
+                                        "isCorrect": false,
+                                        "rationale": "The president's pardon power extends to offenses against the United States (federal offenses), but does not apply to state crimes or cases of impeachment."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Releasing a federal inmate convicted of interstate bank robbery.",
+                                        "isCorrect": true,
+                                        "rationale": "The president's pardon power extends to offenses against the United States (federal offenses), but does not apply to state crimes or cases of impeachment."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Overturning an impeachment and removal conviction voted by the Senate.",
+                                        "isCorrect": false,
+                                        "rationale": "The president's pardon power extends to offenses against the United States (federal offenses), but does not apply to state crimes or cases of impeachment."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Voiding a city municipal court fine issued against a private business.",
+                                        "isCorrect": false,
+                                        "rationale": "The president's pardon power extends to offenses against the United States (federal offenses), but does not apply to state crimes or cases of impeachment."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Remember that presidential pardons cover federal offenses only; they do not apply to state convictions or impeachment removals."
+          },
+          {
+                    "id": "Pres-2-20",
+                    "question": "A presidential nominee from New York with deep business experience selects an experienced rural governor from the Midwest as a running mate. This strategic decision is primarily designed to:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Satisfy the constitutional mandate requiring running mates from different parties.",
+                                        "isCorrect": false,
+                                        "rationale": "Balancing the ticket involves choosing a vice-presidential running mate whose characteristics, background, or geographic base complement and broaden the candidate's electoral coalition."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Strengthen the ticket by broadening regional and demographic appeal among voters.",
+                                        "isCorrect": true,
+                                        "rationale": "Balancing the ticket involves choosing a vice-presidential running mate whose characteristics, background, or geographic base complement and broaden the candidate's electoral coalition."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Ensure that the Vice President can serve simultaneously in the Cabinet and Senate.",
+                                        "isCorrect": false,
+                                        "rationale": "Balancing the ticket involves choosing a vice-presidential running mate whose characteristics, background, or geographic base complement and broaden the candidate's electoral coalition."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Guarantee that the President pro tempore assumes leadership over foreign policy.",
+                                        "isCorrect": false,
+                                        "rationale": "Balancing the ticket involves choosing a vice-presidential running mate whose characteristics, background, or geographic base complement and broaden the candidate's electoral coalition."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Candidates look for running mates whose background or geographic appeal balances their own electoral vulnerabilities."
+          },
+          {
+                    "id": "Pres-2-21",
+                    "question": "Under the U.S. Constitution and the 25th Amendment, what occurs if the President dies in office?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The Speaker of the House immediately takes the oath as the new permanent President.",
+                                        "isCorrect": false,
+                                        "rationale": "Upon the death or removal of the president, the vice president becomes president, and under Section 2 of the 25th Amendment, nominates a new vice president who must be confirmed by a majority vote of both houses of Congress."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "The Vice President becomes President and nominates a new Vice President.",
+                                        "isCorrect": true,
+                                        "rationale": "Upon the death or removal of the president, the vice president becomes president, and under Section 2 of the 25th Amendment, nominates a new vice president who must be confirmed by a majority vote of both houses of Congress."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The Secretary of State administers executive agencies until a special election.",
+                                        "isCorrect": false,
+                                        "rationale": "Upon the death or removal of the president, the vice president becomes president, and under Section 2 of the 25th Amendment, nominates a new vice president who must be confirmed by a majority vote of both houses of Congress."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "The Chief Justice of the Supreme Court convenes a national run-off ballot.",
+                                        "isCorrect": false,
+                                        "rationale": "Upon the death or removal of the president, the vice president becomes president, and under Section 2 of the 25th Amendment, nominates a new vice president who must be confirmed by a majority vote of both houses of Congress."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Review Article II and the 25th Amendment: the Vice President ascends directly to the presidency, creating a vacancy in their former office."
+          },
+          {
+                    "id": "Pres-2-22",
+                    "question": "When the President selects an individual to serve as Secretary of Defense, which institutional step is constitutionally required before taking office?",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "Securing approval through a majority vote in the United States Senate.",
+                                        "isCorrect": true,
+                                        "rationale": "Article II, Section 2 requires presidential nominations of cabinet heads to receive the advice and consent of the Senate via a simple majority vote."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "Receiving a unanimous endorsement from the full joint Chiefs of Staff.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 2 requires presidential nominations of cabinet heads to receive the advice and consent of the Senate via a simple majority vote."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "Winning confirmation during a secret ballot conducted by the House.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 2 requires presidential nominations of cabinet heads to receive the advice and consent of the Senate via a simple majority vote."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "Passing a competitive civil service merit examination in federal law.",
+                                        "isCorrect": false,
+                                        "rationale": "Article II, Section 2 requires presidential nominations of cabinet heads to receive the advice and consent of the Senate via a simple majority vote."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Think about the 'Advice and Consent' clause in Article II: cabinet appointments require the approval of one specific congressional chamber."
+          },
+          {
+                    "id": "Pres-2-23",
+                    "question": "In the modern Electoral College system, a state's total allocation of presidential electors equals:",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "The total number of voting precincts established by county election boards.",
+                                        "isCorrect": false,
+                                        "rationale": "Each state's electoral votes equal its total representation in Congress (number of representatives in the House based on population, plus its two Senators)."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "The combined total of its U.S. House representatives plus its two U.S. Senators.",
+                                        "isCorrect": true,
+                                        "rationale": "Each state's electoral votes equal its total representation in Congress (number of representatives in the House based on population, plus its two Senators)."
+                              },
+                              {
+                                        "label": "C",
+                                        "text": "The exact percentage of popular ballots cast during the preceding midterms.",
+                                        "isCorrect": false,
+                                        "rationale": "Each state's electoral votes equal its total representation in Congress (number of representatives in the House based on population, plus its two Senators)."
+                              },
+                              {
+                                        "label": "D",
+                                        "text": "A uniform baseline of ten electors granted equally to all fifty states.",
+                                        "isCorrect": false,
+                                        "rationale": "Each state's electoral votes equal its total representation in Congress (number of representatives in the House based on population, plus its two Senators)."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Look at how congressional representation in both chambers determines electoral strength."
+          },
+          {
+                    "id": "Pres-2-24",
+                    "question": "True or False: Although the President directs troop movements as Commander in Chief, the constitutional authority to formally declare war is vested exclusively in Congress.",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "True",
+                                        "isCorrect": true,
+                                        "rationale": "Article I, Section 8 grants Congress the explicit power to declare war, while Article II makes the president Commander in Chief of the armed forces."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "False",
+                                        "isCorrect": false,
+                                        "rationale": "Article I, Section 8 grants Congress the explicit power to declare war, while Article II makes the president Commander in Chief of the armed forces."
+                              }
+                    ],
+                    "correctAnswer": "A",
+                    "hint": "Distinguish operational military control under Article II from the formal Article I legislative power to declare war."
+          },
+          {
+                    "id": "Pres-2-25",
+                    "question": "True or False: A regular presidential veto permanently kills a bill, leaving Congress with no constitutional procedure to enact that legislation.",
+                    "options": [
+                              {
+                                        "label": "A",
+                                        "text": "True",
+                                        "isCorrect": false,
+                                        "rationale": "Congress can override a regular presidential veto by achieving a two-thirds vote in both the House and the Senate, enacting the bill into law without presidential approval."
+                              },
+                              {
+                                        "label": "B",
+                                        "text": "False",
+                                        "isCorrect": true,
+                                        "rationale": "Congress can override a regular presidential veto by achieving a two-thirds vote in both the House and the Senate, enacting the bill into law without presidential approval."
+                              }
+                    ],
+                    "correctAnswer": "B",
+                    "hint": "Recall the system of checks and balances: Congress can override a veto if support is strong enough in both chambers."
+          }
+]
     }
 };

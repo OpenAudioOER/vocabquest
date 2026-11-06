@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { BookOpen, CheckCircle2, XCircle, ArrowRight, RotateCcw, Award, Landmark, Shield, Scale, Star, Zap, Info, PlayCircle } from 'lucide-react';
+import { BookOpen, CheckCircle2, XCircle, ArrowRight, RotateCcw, Award, Landmark, Shield, Scale, Star, Zap, Info, PlayCircle, Vote, HelpCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { govQuizData, QuizQuestion } from '../data/govQuizData';
 
@@ -14,6 +14,7 @@ export const GovQuiz: React.FC = () => {
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [score, setScore] = useState(0);
     const [isShaking, setIsShaking] = useState(false);
+    const [showHint, setShowHint] = useState(false);
 
     const topics = Object.keys(govQuizData);
     const levels = ['Level 1', 'Level 2'];
@@ -21,12 +22,21 @@ export const GovQuiz: React.FC = () => {
     const startQuiz = () => {
         if (!topic || !level) return;
         const topicData = govQuizData[topic]?.[level] || [];
-        // Randomly select 15 questions
+        if (topicData.length === 0) return;
+
+        // Randomly select 15 questions (or all if fewer than 15)
         const shuffledQuestions = [...topicData].sort(() => 0.5 - Math.random()).slice(0, 15);
         
-        // Randomize the options for each question
+        // Randomize the options for each question (preserves True/False standard order)
         const randomizedQuestions = shuffledQuestions.map(q => {
-            const shuffledOptions = [...q.options].sort(() => 0.5 - Math.random());
+            const isTrueFalse = q.options.length === 2 && 
+                q.options.some(o => o.text.trim().toLowerCase() === 'true') && 
+                q.options.some(o => o.text.trim().toLowerCase() === 'false');
+
+            const shuffledOptions = isTrueFalse
+                ? [...q.options].sort((a, b) => (a.text.trim().toLowerCase() === 'true' ? -1 : 1))
+                : [...q.options].sort(() => 0.5 - Math.random());
+
             const labels = ['A', 'B', 'C', 'D'];
             let newCorrectAnswer = q.correctAnswer;
             
@@ -49,6 +59,7 @@ export const GovQuiz: React.FC = () => {
         setCurrentIndex(0);
         setSelectedOption(null);
         setScore(0);
+        setShowHint(false);
         setGameState('playing');
     };
 
@@ -75,6 +86,7 @@ export const GovQuiz: React.FC = () => {
         if (currentIndex + 1 < questions.length) {
             setCurrentIndex(prev => prev + 1);
             setSelectedOption(null);
+            setShowHint(false);
         } else {
             setGameState('completed');
         }
@@ -84,6 +96,7 @@ export const GovQuiz: React.FC = () => {
         setGameState('setup');
         setTopic('');
         setLevel('');
+        setShowHint(false);
     };
 
     useEffect(() => {
@@ -105,6 +118,7 @@ export const GovQuiz: React.FC = () => {
             case 'Federalism': return <Landmark className="mb-3 text-primary" size={36} />;
             case 'Civil Liberties': return <Shield className="mb-3 text-primary" size={36} />;
             case 'Civil Rights': return <Scale className="mb-3 text-primary" size={36} />;
+            case 'The President & Public Opinion': return <Vote className="mb-3 text-primary" size={36} />;
             default: return <BookOpen className="mb-3 text-primary" size={36} />;
         }
     };
@@ -150,19 +164,24 @@ export const GovQuiz: React.FC = () => {
                                 1. Select Topic
                                 <div className="absolute -bottom-2 left-0 w-1/2 h-1 bg-primary/20 rounded-full"></div>
                             </h2>
-                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                                 {topics.map(t => (
                                     <button
                                         key={t}
-                                        onClick={() => setTopic(t)}
-                                        className={`p-6 flex flex-col items-center justify-center rounded-2xl border-2 font-bold text-lg transition-all duration-300 ${
+                                        onClick={() => {
+                                            setTopic(t);
+                                            if (level && (govQuizData[t]?.[level] || []).length === 0) {
+                                                setLevel('');
+                                            }
+                                        }}
+                                        className={`p-5 flex flex-col items-center justify-center text-center rounded-2xl border-2 font-bold text-base transition-all duration-300 ${
                                             topic === t 
                                             ? 'bg-primary/5 border-primary text-primary shadow-md scale-105 transform' 
                                             : 'bg-white border-slate-200 text-slate-600 hover:border-primary-light hover:bg-slate-50 hover:-translate-y-1 hover:shadow-sm'
                                         }`}
                                     >
                                         {getTopicIcon(t)}
-                                        {t}
+                                        <span className="leading-snug">{t}</span>
                                     </button>
                                 ))}
                             </div>
@@ -174,26 +193,39 @@ export const GovQuiz: React.FC = () => {
                                 <div className="absolute -bottom-2 left-0 w-1/2 h-1 bg-bright-yellow/40 rounded-full"></div>
                             </h2>
                             <div className="grid grid-cols-2 gap-5">
-                                {levels.map(l => (
-                                    <button
-                                        key={l}
-                                        onClick={() => setLevel(l)}
-                                        className={`p-6 flex flex-col items-center justify-center rounded-2xl border-2 font-bold text-lg transition-all duration-300 ${
-                                            level === l 
-                                            ? 'bg-soft-yellow/40 border-bright-yellow text-slate-900 shadow-md scale-105 transform' 
-                                            : 'bg-white border-slate-200 text-slate-600 hover:border-bright-yellow hover:bg-slate-50 hover:-translate-y-1 hover:shadow-sm'
-                                        }`}
-                                    >
-                                        {getLevelIcon(l)}
-                                        {l}
-                                    </button>
-                                ))}
+                                {levels.map(l => {
+                                    const questionCount = topic ? (govQuizData[topic]?.[l] || []).length : 0;
+                                    const isAvailable = !topic || questionCount > 0;
+
+                                    return (
+                                        <button
+                                            key={l}
+                                            onClick={() => isAvailable && setLevel(l)}
+                                            disabled={!isAvailable}
+                                            className={`p-6 flex flex-col items-center justify-center rounded-2xl border-2 font-bold text-lg transition-all duration-300 ${
+                                                !isAvailable
+                                                    ? 'bg-slate-50 border-slate-200 text-slate-300 cursor-not-allowed opacity-60'
+                                                    : level === l 
+                                                    ? 'bg-soft-yellow/40 border-bright-yellow text-slate-900 shadow-md scale-105 transform' 
+                                                    : 'bg-white border-slate-200 text-slate-600 hover:border-bright-yellow hover:bg-slate-50 hover:-translate-y-1 hover:shadow-sm'
+                                            }`}
+                                        >
+                                            {getLevelIcon(l)}
+                                            <span>{l}</span>
+                                            <span className="text-xs font-medium text-slate-400 mt-1">
+                                                {l === 'Level 1' ? 'Foundational' : 'Challenging'}
+                                                {!isAvailable && topic ? ' (Coming Soon)' : ''}
+                                                {isAvailable && topic ? ` (${questionCount} questions)` : ''}
+                                            </span>
+                                        </button>
+                                    );
+                                })}
                             </div>
                         </div>
 
                         <button
                             onClick={startQuiz}
-                            disabled={!topic || !level}
+                            disabled={!topic || !level || (govQuizData[topic]?.[level] || []).length === 0}
                             className="w-full py-5 rounded-2xl bg-primary text-white font-black text-xl shadow-glow-blue hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all mt-8 flex items-center justify-center group"
                         >
                             <PlayCircle className="mr-3 group-hover:scale-110 transition-transform" size={28} />
@@ -258,9 +290,33 @@ export const GovQuiz: React.FC = () => {
 
                 {/* Question */}
                 <div className="bg-white rounded-3xl shadow-playful p-6 sm:p-10 border-2 border-slate-100 mb-6">
-                    <h3 className="text-2xl font-bold text-slate-900 leading-relaxed mb-8">
+                    <h3 className="text-2xl font-bold text-slate-900 leading-relaxed mb-6">
                         {currentQ.question}
                     </h3>
+
+                    {/* Pedagogical Hint button/callout */}
+                    {currentQ.hint && !isAnswered && (
+                        <div className="mb-6">
+                            {!showHint ? (
+                                <button
+                                    type="button"
+                                    onClick={() => setShowHint(true)}
+                                    className="inline-flex items-center text-sm font-bold text-amber-700 bg-amber-50 hover:bg-amber-100 border border-amber-200 px-3.5 py-1.5 rounded-full transition-colors"
+                                >
+                                    <HelpCircle size={16} className="mr-1.5 text-amber-600" />
+                                    Need a hint?
+                                </button>
+                            ) : (
+                                <div className="bg-amber-50 border border-amber-200 p-4 rounded-2xl text-amber-950 text-sm flex items-start animate-fade-in shadow-xs">
+                                    <HelpCircle size={18} className="mr-2 text-amber-600 flex-shrink-0 mt-0.5" />
+                                    <div>
+                                        <span className="font-bold text-amber-800">Hint: </span>
+                                        <span className="font-medium text-slate-700">{currentQ.hint}</span>
+                                    </div>
+                                </div>
+                            )}
+                        </div>
+                    )}
 
                     <div className="space-y-3">
                         {currentQ.options.map((opt) => {
