@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Header, StateExplorerMode } from "../components/states/Header";
 import { MapTapQuiz } from "../components/states/MapTapQuiz";
+import { BlankMapChallenge } from "../components/states/BlankMapChallenge";
 import { ExamQuiz } from "../components/states/ExamQuiz";
 import { ShapeDetective } from "../components/states/ShapeDetective";
 import { SpellingBee } from "../components/states/SpellingBee";
@@ -103,6 +104,13 @@ export const StatesExplorer: React.FC = () => {
             />
           )}
 
+          {currentMode === "blank" && (
+            <BlankMapChallenge
+              onSuccess={handleSuccess}
+              onFailure={handleFailure}
+            />
+          )}
+
           {currentMode === "exam" && (
             <ExamQuiz
               dataset={activeDataset}
@@ -135,13 +143,19 @@ export const StatesExplorer: React.FC = () => {
         <div className="flex items-center justify-center space-x-2 mb-1">
           <BookOpen className="w-4 h-4 text-indigo-400" />
           <span className="font-bold text-slate-300">
-            {activeUnit === "unit1"
-              ? "Map Group A: 23 Eastern & Southern States"
-              : activeUnit === "unit2"
-              ? "Map Group B: 27 Midwest, West & Non-Contiguous States"
-              : "Entire Map: All 50 US States"}
-            {" • "}
-            {activeFocus === "states" ? "States Only" : activeFocus === "capitals" ? "Capitals Only" : "States & Capitals"}
+            {currentMode === "blank" ? (
+              "Entire Map: All 50 US States • Blank Map Challenge"
+            ) : (
+              <>
+                {activeUnit === "unit1"
+                  ? "Map Group A: 23 Eastern & Southern States"
+                  : activeUnit === "unit2"
+                  ? "Map Group B: 27 Midwest, West & Non-Contiguous States"
+                  : "Entire Map: All 50 US States"}
+                {" • "}
+                {activeFocus === "states" ? "States Only" : activeFocus === "capitals" ? "Capitals Only" : "States & Capitals"}
+              </>
+            )}
           </span>
         </div>
         <p className="flex items-center justify-center gap-1">

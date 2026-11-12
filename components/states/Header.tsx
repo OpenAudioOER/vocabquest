@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
-import { Star, Trophy, Sparkles, Map, SpellCheck, Compass, Award, MapPin, Building2, Layers } from "lucide-react";
+import { Star, Trophy, Sparkles, Map, SpellCheck, Compass, Award, MapPin, Building2, Layers, PenTool } from "lucide-react";
 import { UnitType, FocusType } from "../../data/states/scheduleData";
 
-export type StateExplorerMode = "map" | "exam" | "shape" | "spelling";
+export type StateExplorerMode = "map" | "exam" | "shape" | "spelling" | "blank";
 
 interface HeaderProps {
   currentMode: StateExplorerMode;
@@ -149,7 +149,7 @@ export const Header: React.FC<HeaderProps> = ({
         </div>
 
         {/* Navigation Mode Tabs */}
-        <div className="max-w-3xl mx-auto w-full grid grid-cols-2 md:grid-cols-4 gap-1.5 p-1 bg-black/20 backdrop-blur-md rounded-2xl">
+        <div className="max-w-4xl mx-auto w-full grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-1.5 p-1 bg-black/20 backdrop-blur-md rounded-2xl">
           <button
             onClick={() => setMode("exam")}
             className={`flex items-center justify-center space-x-1.5 py-2 px-3 rounded-xl font-bold transition-all text-xs md:text-sm ${
@@ -172,6 +172,18 @@ export const Header: React.FC<HeaderProps> = ({
           >
             <MapPin className="w-4 h-4" />
             <span>Map Explorer</span>
+          </button>
+
+          <button
+            onClick={() => setMode("blank")}
+            className={`flex items-center justify-center space-x-1.5 py-2 px-3 rounded-xl font-bold transition-all text-xs md:text-sm ${
+              currentMode === "blank"
+                ? "bg-white text-brand-purple shadow-md scale-[1.02]"
+                : "text-white/80 hover:text-white hover:bg-white/10"
+            }`}
+          >
+            <PenTool className="w-4 h-4" />
+            <span>Blank Map</span>
           </button>
 
           <button
